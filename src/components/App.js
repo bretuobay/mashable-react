@@ -5,6 +5,12 @@ import { Switch, NavLink, Route } from 'react-router-dom';
 
 import Weather from '../containers/Weather';
 import NewsBySource from '../containers/NewsBySource';
+import CulturePage from '../containers/CulturePage';
+import EntertainmentPage from '../containers/EntertainmentPage';
+import TechnologyPage from '../containers/TechnologyPage';
+import SciencePage from '../containers/SciencePage';
+import BusinessPage from '../containers/BusinessPage';
+import VideosPage from '../containers/VideosPage';
 
 
 
@@ -25,7 +31,7 @@ class App extends React.Component {
              </div>
              <div id="navbarcollapse" className="collapse navbar-collapse">
                <ul className="navbar-nav ml-auto">
-                 <li className="nav-item">< NavLink  to="/home" className="nav-link animsition-link"activeStyle={activeStyle}>HOME</NavLink></li>
+                 <li className="nav-item">< NavLink  to="/" className="nav-link animsition-link"activeStyle={activeStyle}>HOME</NavLink></li>
                  <li className="nav-item">< NavLink  to="/culture" className="nav-link animsition-link"activeStyle={activeStyle}>CULTURE & POLITICS</NavLink></li>
                  <li className="nav-item">< NavLink  to="/entertainment" className="nav-link animsition-link"activeStyle={activeStyle}>ENTERTAINMENT</NavLink></li>
                  <li className="nav-item">< NavLink  to="/technology" className="nav-link animsition-link"activeStyle={activeStyle}>TECH </NavLink></li>
@@ -41,7 +47,12 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={NewsBySource} />
           <Route path="/news" component={NewsBySource} />
-          <Route path="/weather" component={Weather} />
+          <Route path="/culture" component={CulturePage} />
+          <Route path="/entertainment" component={EntertainmentPage} />
+          <Route path="/technology" component={TechnologyPage} />
+          <Route path="/science" component={SciencePage} />
+          <Route path="/business" component={BusinessPage} />
+          <Route path="/videos" component={VideosPage} />
         </Switch>
         </div>
       </div>
