@@ -9,7 +9,7 @@ export const Header = (props)=>{
         <nav className="navbar navbar-toggleable-md">   
         <div className="container"> 
             <div className="navbar-header d-flex align-items-center justify-content-between">
-             < NavLink  to="/" className="navbar-brand animsition-link">Mashable Clone</NavLink>
+             < NavLink  to="/" className="navbar-brand animsition-link">React Mashable Clone</NavLink>
               <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" className="navbar-toggler"><span></span><span></span><span></span></button>
             </div>
             <div id="navbarcollapse" className="collapse navbar-collapse">

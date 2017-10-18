@@ -15,7 +15,7 @@ export const NewsRow = ({ articles }) => {
             <div className="post-details">
               <div className="date meta-last">{article.publishedAt}</div>
             </div>
-            <a href="{{article.url}}" className="animsition-link">
+            <a href="{article.url}" className="animsition-link">
               <h3 className="h4 w-100">{article.title}</h3>
             </a>
             <p className="text-muted">{article.description}</p>

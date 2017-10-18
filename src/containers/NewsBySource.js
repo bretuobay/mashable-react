@@ -1,56 +1,60 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import * as _ from "lodash";
 import { fetchSingleSourceNews } from "../actions/newsActions";
 import { NewsRow } from "../components/NewsRow";
 
-
 class NewsBySource extends Component {
-  
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    this.props.onLoadSingleSouceNews('techcrunch');
+    this.props.fetchFromNewsAPI(this.props.source);
+    //this.props.getNewsBySingleSource(this.props.source);
   }
 
   render() {
-    return ( 
-      
-          <div className="row">
-            <main className="posts-listing col-lg-8">
-              <div className="container">
-                {this.props.data ? (
-                  <NewsRow articles={this.props.data.articles} />
-                ) : null}
-              </div>
-            </main>
-            <aside className="col-lg-4">
-            <header>
-                <h3 className="h6">Search the blog</h3>
-              </header>
-            </aside>
-           
-          </div>
-      
+    console.log(this.props.data);
+
+    return (
+      <div>
+        {this.props.data ? <NewsRow articles={this.props.data} /> : null}
+      </div>
     );
   }
 }
 
-
-
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    onLoadSingleSouceNews: (source) => dispatch(fetchSingleSourceNews(source)),
+    fetchFromNewsAPI: source => dispatch(fetchSingleSourceNews(source))
   };
 };
 
+const retrieveDataFromStore = (state, ownProps) => {
+  let storeNewsData = state.currentNews;
 
-const mapStateToProps = (state) => {
-  const news = state.currentNews;
+  if (storeNewsData) {
+   return storeNewsData
+      .filter(stateData => {
+        return stateData !== undefined;
+      })
+      .map(data => {
+        let keyval = _.findKey(data, ["source", ownProps.source]);
+        if (keyval) {
+          return data[keyval].articles;
+        } else {
+          return [];
+        }
+      }).slice(-1)[0];
+  }
+};
+
+const mapStateToProps = (state, ownProps) => {
+
   return {
-    data: news.data,
+    data: retrieveDataFromStore(state, ownProps)
   };
 };
 

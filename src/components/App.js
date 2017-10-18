@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, NavLink, Route } from 'react-router-dom';
 import Weather from '../containers/Weather';
-import NewsBySource from '../containers/NewsBySource';
+import HomePage from '../containers/HomePage';
 import CulturePage from '../containers/CulturePage';
 import EntertainmentPage from '../containers/EntertainmentPage';
 import TechnologyPage from '../containers/TechnologyPage';
@@ -27,8 +27,8 @@ class App extends React.Component {
        <Header/>
        <div className="container">
         <Switch>
-          <Route exact path="/" component={NewsBySource} />
-          <Route path="/news" component={NewsBySource} />
+          <Route exact path="/" component={HomePage} />
+          <Route path="/news" component={HomePage} />
           <Route path="/culture" component={CulturePage} />
           <Route path="/entertainment" component={EntertainmentPage} />
           <Route path="/technology" component={TechnologyPage} />
