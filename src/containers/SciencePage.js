@@ -16,18 +16,26 @@ class SciencePage extends Component {
 
   
   render() {
-  
-    return (
-      <div>
-        <h1>The News Snapshot</h1>
-        <div>
-          { this.props.data ? <NewsRow articles={this.props.data.articles}></NewsRow> : null}
-        </div>
-      </div>
+    return ( 
+      
+          <div className="row">
+            <main className="posts-listing col-lg-8">
+              <div className="container">
+                {this.props.data ? (
+                  <NewsRow articles={this.props.data.articles} />
+                ) : null}
+              </div>
+            </main>
+            <aside className="col-lg-4">
+            <header>
+                <h3 className="h6">Search the blog</h3>
+              </header>
+            </aside>
+          </div>
+      
     );
   }
 }
-
 
 
 const mapDispatchToProps = (dispatch) => {

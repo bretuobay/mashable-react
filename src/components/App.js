@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, NavLink, Route } from 'react-router-dom';
-
 import Weather from '../containers/Weather';
 import NewsBySource from '../containers/NewsBySource';
 import CulturePage from '../containers/CulturePage';
@@ -11,6 +10,9 @@ import TechnologyPage from '../containers/TechnologyPage';
 import SciencePage from '../containers/SciencePage';
 import BusinessPage from '../containers/BusinessPage';
 import VideosPage from '../containers/VideosPage';
+import {Header} from '../components/Header';
+import {Footer} from '../components/Footer';
+
 
 
 
@@ -20,29 +22,9 @@ import VideosPage from '../containers/VideosPage';
 
 class App extends React.Component {
   render() {
-    const activeStyle = { color: 'blue' };
     return (
      <div className="container-fluid">
-       <header className="header">
-         <nav className="navbar navbar-toggleable-md">    
-             <div className="navbar-header d-flex align-items-center justify-content-between">
-              < NavLink  to="/" className="navbar-brand animsition-link">Mashable Clone</NavLink>
-               <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" className="navbar-toggler"><span></span><span></span><span></span></button>
-             </div>
-             <div id="navbarcollapse" className="collapse navbar-collapse">
-               <ul className="navbar-nav ml-auto">
-                 <li className="nav-item">< NavLink  to="/" className="nav-link animsition-link"activeStyle={activeStyle}>HOME</NavLink></li>
-                 <li className="nav-item">< NavLink  to="/culture" className="nav-link animsition-link"activeStyle={activeStyle}>CULTURE & POLITICS</NavLink></li>
-                 <li className="nav-item">< NavLink  to="/entertainment" className="nav-link animsition-link"activeStyle={activeStyle}>ENTERTAINMENT</NavLink></li>
-                 <li className="nav-item">< NavLink  to="/technology" className="nav-link animsition-link"activeStyle={activeStyle}>TECH </NavLink></li>
-                 <li className="nav-item">< NavLink  to="/science" className="nav-link animsition-link"activeStyle={activeStyle}>SCIENCE</NavLink></li>
-                 <li className="nav-item">< NavLink  to="/business" className="nav-link animsition-link"activeStyle={activeStyle}>BUSINESS</NavLink></li>
-                 <li className="nav-item">< NavLink  to="/videos" className="nav-link animsition-link"activeStyle={activeStyle}>VIDEOS & MOVIES </NavLink></li>
-               </ul>
-             </div>
-          
-         </nav>
-       </header>
+       <Header/>
        <div className="container">
         <Switch>
           <Route exact path="/" component={NewsBySource} />
@@ -55,6 +37,7 @@ class App extends React.Component {
           <Route path="/videos" component={VideosPage} />
         </Switch>
         </div>
+        <Footer/>
       </div>
     );
   }

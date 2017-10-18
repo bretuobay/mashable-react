@@ -5,7 +5,7 @@ export const NewsRow = ({ articles }) => {
     <div className="row">
       {articles.map(function(article, index) {
         return (
-          <div className="col-md-6" key={index}>
+          <div className="post col-xl-6" key={index}>
             <div className="post-thumbnail">
               <a href={article.url} className="animsition-link">
                 <img src={article.urlToImage} alt="..." className="img-fluid" />

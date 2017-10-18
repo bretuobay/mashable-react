@@ -5,45 +5,46 @@ import { fetchSingleSourceNews } from "../actions/newsActions";
 import { NewsRow } from "../components/NewsRow";
 
 class NewsBySource extends Component {
-  
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    this.props.onLoadSingleSouceNews('techcrunch');
+    this.props.onLoadSingleSouceNews("techcrunch");
   }
 
-  
-  
-  
-
   render() {
-  
-    return (
-      <div>
-        <h1>The News Snapshot</h1>
-        <div>
-          { this.props.data ? <NewsRow articles={this.props.data.articles}></NewsRow> : null}
-        </div>
-      </div>
+    return ( 
+      
+          <div className="row">
+            <main className="posts-listing col-lg-8">
+              <div className="container">
+                {this.props.data ? (
+                  <NewsRow articles={this.props.data.articles} />
+                ) : null}
+              </div>
+            </main>
+            <aside className="col-lg-4">
+            <header>
+                <h3 className="h6">Search the blog</h3>
+              </header>
+            </aside>
+          </div>
+      
     );
   }
 }
 
-
-
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    onLoadSingleSouceNews: (source) => dispatch(fetchSingleSourceNews(source)),
+    onLoadSingleSouceNews: source => dispatch(fetchSingleSourceNews(source))
   };
 };
 
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const news = state.currentNews;
   return {
-    data: news.data,
+    data: news.data
   };
 };
 
