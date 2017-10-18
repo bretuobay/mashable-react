@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchSingleSourceNews } from "../actions/newsActions";
 import { NewsRow } from "../components/NewsRow";
+import NewsBySource from "./NewsBySource";
+import { retrieveDataFromStore } from "../utils/articlesDataMapper"
+
 
 class BusinessPage extends Component {
   
@@ -11,19 +14,17 @@ class BusinessPage extends Component {
   }
 
   componentDidMount() {
-    this.props.onLoadSingleSouceNews('techcrunch');
+    //this.props.onLoadSingleSouceNews('techcrunch');
   }
 
   
   render() {
     return ( 
       
-          <div className="row">
+      <div className="row">
             <main className="posts-listing col-lg-8">
               <div className="container">
-                {this.props.data ? (
-                  <NewsRow articles={this.props.data.articles} />
-                ) : null}
+               <NewsBySource source ="business-insider" />
               </div>
             </main>
             <aside className="col-lg-4">
@@ -38,18 +39,5 @@ class BusinessPage extends Component {
 }
 
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onLoadSingleSouceNews: (source) => dispatch(fetchSingleSourceNews(source)),
-  };
-};
 
-
-const mapStateToProps = (state) => {
-  const news = state.currentNews;
-  return {
-    data: news.data,
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(BusinessPage);
+export default connect(null, null)(BusinessPage);

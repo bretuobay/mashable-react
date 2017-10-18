@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchSingleSourceNews } from "../actions/newsActions";
 import { NewsRow } from "../components/NewsRow";
+import NewsBySource from "./NewsBySource";
 
 class TechnologyPage extends Component {
   
@@ -11,19 +12,17 @@ class TechnologyPage extends Component {
   }
 
   componentDidMount() {
-    this.props.onLoadSingleSouceNews('techcrunch');
+    //this.props.onLoadSingleSouceNews('techcrunch');
   }
 
   
   render() {
     return ( 
       
-          <div className="row">
+      <div className="row">
             <main className="posts-listing col-lg-8">
               <div className="container">
-                {this.props.data ? (
-                  <NewsRow articles={this.props.data.articles} />
-                ) : null}
+               <NewsBySource source ="ars-technica" />
               </div>
             </main>
             <aside className="col-lg-4">
@@ -38,18 +37,5 @@ class TechnologyPage extends Component {
 }
 
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onLoadSingleSouceNews: (source) => dispatch(fetchSingleSourceNews(source)),
-  };
-};
 
-
-const mapStateToProps = (state) => {
-  const news = state.currentNews;
-  return {
-    data: news.data,
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TechnologyPage);
+export default connect(null, null)(TechnologyPage);

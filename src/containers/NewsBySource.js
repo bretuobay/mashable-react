@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import * as _ from "lodash";
+
 import { fetchSingleSourceNews } from "../actions/newsActions";
 import { NewsRow } from "../components/NewsRow";
+import { retrieveDataFromStore } from "../utils/articlesDataMapper"
 
 class NewsBySource extends Component {
   constructor(props) {
@@ -32,24 +33,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const retrieveDataFromStore = (state, ownProps) => {
-  let storeNewsData = state.currentNews;
 
-  if (storeNewsData) {
-   return storeNewsData.map(data => {
-        let keyval = _.findKey(data, ["source", ownProps.source]);
-
-        if (keyval) {
-        
-          return   data[keyval].articles;
-        } else {
-          return [];
-        }
-      }).filter(stateData => {
-        return _.isArray(stateData) &&  !_.isEmpty(stateData);
-      })[0];
-  }
-};
 
 const mapStateToProps = (state, ownProps) => {
   //console.log(retrieveDataFromStore(state, ownProps) )
