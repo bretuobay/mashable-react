@@ -36,26 +36,26 @@ const retrieveDataFromStore = (state, ownProps) => {
   let storeNewsData = state.currentNews;
 
   if (storeNewsData) {
-   return storeNewsData
-      .filter(stateData => {
-        return stateData !== undefined;
-      })
-      .map(data => {
+   return storeNewsData.map(data => {
         let keyval = _.findKey(data, ["source", ownProps.source]);
+
         if (keyval) {
-          return data[keyval].articles;
+        
+          return   data[keyval].articles;
         } else {
           return [];
         }
-      }).slice(-1)[0];
+      }).filter(stateData => {
+        return _.isArray(stateData) &&  !_.isEmpty(stateData);
+      })[0];
   }
 };
 
 const mapStateToProps = (state, ownProps) => {
-
+  //console.log(retrieveDataFromStore(state, ownProps) )
   return {
-    data: retrieveDataFromStore(state, ownProps)
-  };
+     data : retrieveDataFromStore(state, ownProps)
+  }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsBySource);
