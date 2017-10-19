@@ -11,7 +11,6 @@ export const NewsRow = ({ articles }) => {
                 <img src={article.urlToImage} alt="..." className="img-fluid" />
               </a>
             </div>
-
             <div className="post-details">
               <div className="date meta-last">{article.publishedAt}</div>
             </div>
