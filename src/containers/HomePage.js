@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { fetchSingleSourceNews } from "../actions/newsActions";
 import { NewsRow } from "../components/NewsRow";
 import NewsBySource from "./NewsBySource";
@@ -60,4 +58,4 @@ class HomePage extends Component {
 }
 
 
-export default connect(null, null)(HomePage);
+export default HomePage;
