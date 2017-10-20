@@ -3,11 +3,9 @@ import { fetchSingleSourceNews } from "../actions/newsActions";
 import { NewsRow } from "../components/NewsRow";
 import NewsBySource from "./NewsBySource";
 import SideBarPost from "./SideBarPost";
-import { retrieveDataFromStore } from "../utils/articlesDataMapper"
-
+import { retrieveDataFromStore } from "../utils/articlesDataMapper";
 
 class EntertainmentPage extends Component {
-  
   constructor(props) {
     super(props);
   }
@@ -17,12 +15,11 @@ class EntertainmentPage extends Component {
   }
 
   render() {
-    
     let sideMashList = [
-      { id : 'daily-mail', label : 'Daily Mail'},
-      {id : 'football-italia', label : 'Footbal Italia'},
-      { id : 'business-insider-uk' , label : 'Business Insider UK '}
-     ];
+      { id: "daily-mail", label: "Daily Mail" },
+      { id: "football-italia", label: "Footbal Italia" },
+      { id: "business-insider-uk", label: "Business Insider UK " }
+    ];
 
     return (
       <div className="row">
@@ -41,9 +38,15 @@ class EntertainmentPage extends Component {
               <ul className="list-group">
                 {sideMashList.map(function(source, index) {
                   return (
-                    <li className="list-group-item"  key={index}>
-                    <h6> {source.label}</h6>
-                      <SideBarPost  key={index} source={source.id}> </SideBarPost>
+                    <li className="list-group-item" key={index}>
+                      <h6> {source.label}</h6>
+                      <NewsBySource
+                        key={index}
+                        isSideBarList={true}
+                        source={source.id}
+                      >
+                        {" "}
+                      </NewsBySource>
                     </li>
                   );
                 })}
@@ -55,7 +58,5 @@ class EntertainmentPage extends Component {
     );
   }
 }
-
-
 
 export default EntertainmentPage;

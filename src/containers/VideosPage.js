@@ -5,21 +5,20 @@ import NewsBySource from "./NewsBySource";
 import SideBarPost from "./SideBarPost";
 
 class VideosPage extends Component {
-  
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-   // this.props.onLoadSingleSouceNews('techcrunch');
+    // this.props.onLoadSingleSouceNews('techcrunch');
   }
 
   render() {
     let sideMashList = [
-      { id : 'daily-mail', label : 'Daily Mail'},
-      {id : 'football-italia', label : 'Footbal Italia'},
-      { id : 'business-insider-uk' , label : 'Business Insider UK '}
-     ];
+      { id: "daily-mail", label: "Daily Mail" },
+      { id: "football-italia", label: "Footbal Italia" },
+      { id: "business-insider-uk", label: "Business Insider UK " }
+    ];
 
     return (
       <div className="row">
@@ -38,9 +37,15 @@ class VideosPage extends Component {
               <ul className="list-group">
                 {sideMashList.map(function(source, index) {
                   return (
-                    <li className="list-group-item"  key={index}>
+                    <li className="list-group-item" key={index}>
                       <h6> {source.label}</h6>
-                      <SideBarPost  key={index} source={source.id}> </SideBarPost>
+                      <NewsBySource
+                        key={index}
+                        isSideBarList={true}
+                        source={source.id}
+                      >
+                        {" "}
+                      </NewsBySource>
                     </li>
                   );
                 })}
@@ -52,7 +57,5 @@ class VideosPage extends Component {
     );
   }
 }
-
-
 
 export default VideosPage;

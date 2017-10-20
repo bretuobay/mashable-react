@@ -21,7 +21,7 @@ class NewsBySource extends Component {
 
     return (
       <div>
-        {this.props.data ? <NewsRow articles={this.props.data} /> : null}
+        {this.props.data ? <NewsRow articles={this.props.data} isSideBarList={this.props.isSideBarList} /> : null}
       </div>
     );
   }

@@ -3,11 +3,9 @@ import { fetchSingleSourceNews } from "../actions/newsActions";
 import { NewsRow } from "../components/NewsRow";
 import NewsBySource from "./NewsBySource";
 import SideBarPost from "./SideBarPost";
-import { retrieveDataFromStore } from "../utils/articlesDataMapper"
-
+import { retrieveDataFromStore } from "../utils/articlesDataMapper";
 
 class BusinessPage extends Component {
-  
   constructor(props) {
     super(props);
   }
@@ -16,14 +14,12 @@ class BusinessPage extends Component {
     //this.props.onLoadSingleSouceNews('techcrunch');
   }
 
-  
   render() {
-  
     let sideMashList = [
-      { id : 'daily-mail', label : 'Daily Mail'},
-      {id : 'football-italia', label : 'Footbal Italia'},
-      { id : 'business-insider-uk' , label : 'Business Insider UK '}
-     ];
+      { id: "daily-mail", label: "Daily Mail" },
+      { id: "football-italia", label: "Footbal Italia" },
+      { id: "business-insider-uk", label: "Business Insider UK " }
+    ];
 
     return (
       <div className="row">
@@ -43,8 +39,14 @@ class BusinessPage extends Component {
                 {sideMashList.map(function(source, index) {
                   return (
                     <li className="list-group-item" key={index}>
-                    <h6> {source.label}</h6>
-                      <SideBarPost  key={index} source={source.id}> </SideBarPost>
+                      <h6> {source.label}</h6>
+                      <NewsBySource
+                        key={index}
+                        isSideBarList={true}
+                        source={source.id}
+                      >
+                        {" "}
+                      </NewsBySource>
                     </li>
                   );
                 })}
@@ -56,7 +58,5 @@ class BusinessPage extends Component {
     );
   }
 }
-
-
 
 export default BusinessPage;

@@ -15,12 +15,11 @@ class CulturePage extends Component {
   }
 
   render() {
-
     let sideMashList = [
-      { id : 'daily-mail', label : 'Daily Mail'},
-      {id : 'football-italia', label : 'Footbal Italia'},
-      { id : 'business-insider-uk' , label : 'Business Insider UK '}
-     ];
+      { id: "daily-mail", label: "Daily Mail" },
+      { id: "football-italia", label: "Footbal Italia" },
+      { id: "business-insider-uk", label: "Business Insider UK " }
+    ];
 
     return (
       <div className="row">
@@ -29,7 +28,6 @@ class CulturePage extends Component {
             <NewsBySource source="daily-mail" />
           </div>
         </main>
-
         <aside className="col-lg-4">
           <div className="widget latest-posts">
             <header>
@@ -39,9 +37,15 @@ class CulturePage extends Component {
               <ul className="list-group">
                 {sideMashList.map(function(source, index) {
                   return (
-                    <li className="list-group-item"  key={index}>
-                    <h6> {source.label}</h6>
-                      <SideBarPost  key={index} source={source.id}> </SideBarPost>
+                    <li className="list-group-item" key={index}>
+                      <h6> {source.label}</h6>
+                      <NewsBySource
+                        key={index}
+                        isSideBarList={true}
+                        source={source.id}
+                      >
+                        {" "}
+                      </NewsBySource>
                     </li>
                   );
                 })}

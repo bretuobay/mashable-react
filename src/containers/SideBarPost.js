@@ -1,11 +1,10 @@
-
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchSingleSourceNews } from "../actions/newsActions";
 import { NewsRow } from "../components/NewsRow";
-import {SideBarRow} from "../components/SideBarRow";
-import { retrieveDataFromStore } from "../utils/articlesDataMapper"
+import { SideBarRow } from "../components/SideBarRow";
+import { retrieveDataFromStore } from "../utils/articlesDataMapper";
 
 class SideBarPost extends Component {
   constructor(props) {
@@ -34,13 +33,11 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-
-
 const mapStateToProps = (state, ownProps) => {
   //console.log(retrieveDataFromStore(state, ownProps) )
   return {
-     data : retrieveDataFromStore(state, ownProps)
-  }
+    data: retrieveDataFromStore(state, ownProps)
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideBarPost);
