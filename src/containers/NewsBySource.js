@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
 import { fetchSingleSourceNews } from "../actions/newsActions";
 import { NewsRow } from "../components/NewsRow";
-import { retrieveDataFromStore } from "../utils/articlesDataMapper"
+import { retrieveDataFromStore } from "../utils/articlesDataMapper";
 
 class NewsBySource extends Component {
   constructor(props) {
@@ -13,15 +11,17 @@ class NewsBySource extends Component {
 
   componentDidMount() {
     this.props.fetchFromNewsAPI(this.props.source);
-    //this.props.getNewsBySingleSource(this.props.source);
   }
 
   render() {
-    console.log(this.props.data);
-
     return (
       <div>
-        {this.props.data ? <NewsRow articles={this.props.data} isSideBarList={this.props.isSideBarList} /> : null}
+        {this.props.data ? (
+          <NewsRow
+            articles={this.props.data}
+            isSideBarList={this.props.isSideBarList}
+          />
+        ) : null}
       </div>
     );
   }
@@ -33,13 +33,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-
-
 const mapStateToProps = (state, ownProps) => {
-  //console.log(retrieveDataFromStore(state, ownProps) )
   return {
-     data : retrieveDataFromStore(state, ownProps)
-  }
+    data: retrieveDataFromStore(state, ownProps)
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsBySource);

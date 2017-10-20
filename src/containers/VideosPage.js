@@ -1,16 +1,9 @@
 import React, { Component } from "react";
-import { fetchSingleSourceNews } from "../actions/newsActions";
-import { NewsRow } from "../components/NewsRow";
 import NewsBySource from "./NewsBySource";
-import SideBarPost from "./SideBarPost";
 
 class VideosPage extends Component {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-    // this.props.onLoadSingleSouceNews('techcrunch');
   }
 
   render() {

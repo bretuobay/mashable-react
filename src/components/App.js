@@ -1,7 +1,7 @@
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Switch, NavLink, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Weather from '../containers/Weather';
 import HomePage from '../containers/HomePage';
 import CulturePage from '../containers/CulturePage';

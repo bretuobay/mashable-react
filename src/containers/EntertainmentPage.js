@@ -1,19 +1,11 @@
 import React, { Component } from "react";
-import { fetchSingleSourceNews } from "../actions/newsActions";
-import { NewsRow } from "../components/NewsRow";
 import NewsBySource from "./NewsBySource";
-import SideBarPost from "./SideBarPost";
 import { retrieveDataFromStore } from "../utils/articlesDataMapper";
 
 class EntertainmentPage extends Component {
   constructor(props) {
     super(props);
   }
-
-  componentDidMount() {
-    //this.props.onLoadSingleSouceNews('techcrunch');
-  }
-
   render() {
     let sideMashList = [
       { id: "daily-mail", label: "Daily Mail" },
