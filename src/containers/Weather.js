@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { fetchSingleCityWeather } from "../actions/weatherActions";
-import { debounce } from 'lodash'
+import { throttle } from "lodash";
 
 class Weather extends Component {
   constructor(props) {
@@ -12,14 +12,16 @@ class Weather extends Component {
   componentDidMount() {
     this.props.onLoadSingleCity(this.props.currentCity);
   }
+  // check out the following link
+  //https://stackoverflow.com/questions/23123138/perform-debounce-in-react-js
+  // not worth using something like redux form for something so basic
+  // make it work by night :)
 
-
- onChangeInput (event) {
-
-  console.log(event)
-  debounce( this.props.onLoadSingleCity(event.target.value), 500);
-
- }
+  onChangeInput(event) {
+    event.preventDefault();
+    let currentCityVal = this.currentCity.value;
+    this.props.onLoadSingleCity(currentCityVal);
+  }
 
   destructDataByCity(weatherProps) {
     let coord, weather, base, main, wind, clouds, dt, sys, id, name, cod;
@@ -54,7 +56,8 @@ class Weather extends Component {
     return (
       <div className="pt-5">
         <div className="h6"> Currently displaying </div> <br />
-        <div className="h6 alert alert-warning"> City : {wprop.name}</div> <br />
+        <div className="h6 alert alert-warning"> City : {wprop.name}</div>{" "}
+        <br />
         <div className="h6 alert alert-success">
           {" "}
           Temperature : {convertedTemp}
@@ -73,11 +76,18 @@ class Weather extends Component {
         </header>
         <form action="#" className="search-form">
           <div className="form-group">
-            <input type="search" name="cityToSearch" id="cityToSearch"
-            onChange = {this.onChangeInput}
-           placeholder=" Search for City?"
-              />
-            <button type="submit" className="submit"><i className="icon-search"></i></button>
+            <input
+              name="currentCity"
+              id="currentCity"
+              ref={el => (this.currentCity = el)}
+              type="text"
+              defaultValue={this.props.currentCity}
+              onChange={this.onChangeInput}
+              placeholder=" Search for City?"
+            />
+            <button type="submit" className="submit">
+              <i className="icon-search" />
+            </button>
           </div>
         </form>
         <div>
@@ -96,7 +106,8 @@ Weather.propTypes = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onLoadSingleCity: (currentCity) => dispatch(fetchSingleCityWeather(currentCity))
+    onLoadSingleCity: currentCity =>
+      dispatch(fetchSingleCityWeather(currentCity))
   };
 };
 
