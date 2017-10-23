@@ -20,6 +20,7 @@ class Weather extends Component {
 
   onChangeInput(event) {
     event.persist();
+   // event.preventDefault();
     let currentCityVal = this.currentCity.value;
     this.props.onLoadSingleCity(currentCityVal);
   }
@@ -75,7 +76,7 @@ class Weather extends Component {
         <header>
           <h3 className="h6">Search Weather</h3>
         </header>
-        <form action="#" className="search-form" onSubmit = {this.onChangeInput}>
+        {/* <form action="#" className="search-form" onSubmit = {this.onChangeInput}> */}
           <div className="form-group">
             <input
               name="currentCity"
@@ -83,14 +84,14 @@ class Weather extends Component {
               ref={el => (this.currentCity = el)}
               type="text"
               defaultValue={this.props.currentCity}
-              onChange={this.onChangeInput}
+              onChange = {this.onChangeInput}
               placeholder=" Search for City?"
             />
             <button type="submit" className="submit">
               <i className="icon-search" />
             </button>
           </div>
-        </form>
+        {/* </form> */}
         <div>
           {this.props.data ? this.renderCityWeather(this.props.data) : null}
         </div>
