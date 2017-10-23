@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export const NewsRow = ({ articles, isSideBarList }) => {
 
@@ -58,4 +59,9 @@ export const NewsRow = ({ articles, isSideBarList }) => {
 
   }
   
+};
+
+NewsRow.propTypes = {
+  articles : PropTypes.array,
+  isSideBarList : PropTypes.bool
 };

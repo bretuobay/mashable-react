@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { fetchSingleCityWeather } from "../actions/weatherActions";
 
 class Weather extends Component {
@@ -51,6 +52,12 @@ class Weather extends Component {
       </div>
     );
   }
+}
+
+Weather.propTypes ={
+  data :PropTypes.object.isRequired,
+  onLoadSingleCity : PropTypes.func.isRequired,
+  currentCity : PropTypes.string
 }
 
 

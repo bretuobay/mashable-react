@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchSingleSourceNews } from "../actions/newsActions";
 import { NewsRow } from "../components/NewsRow";
 import { retrieveDataFromStore } from "../utils/articlesDataMapper";
+import PropTypes from "prop-types";
 
 class NewsBySource extends Component {
   constructor(props) {
@@ -25,6 +26,14 @@ class NewsBySource extends Component {
       </div>
     );
   }
+}
+
+NewsBySource.propTypes ={
+  data :PropTypes.object.isRequired,
+  fetchFromNewsAPI : PropTypes.func.isRequired,
+  isSideBarList : PropTypes.bool,
+  source :PropTypes.string
+
 }
 
 const mapDispatchToProps = dispatch => {

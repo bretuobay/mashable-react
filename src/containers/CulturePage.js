@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NewsBySource from "./NewsBySource";
-import { retrieveDataFromStore } from "../utils/articlesDataMapper";
+
 
 class CulturePage extends Component {
   constructor(props) {
