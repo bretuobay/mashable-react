@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { fetchSingleCityWeather } from "../actions/weatherActions";
-import { throttle } from "lodash";
+import { debounce } from "lodash";
 
 class Weather extends Component {
   constructor(props) {
@@ -11,6 +11,7 @@ class Weather extends Component {
 
   componentDidMount() {
     this.props.onLoadSingleCity(this.props.currentCity);
+    this.onChangeInput = debounce(this.onChangeInput.bind(this),500);
   }
   // check out the following link
   //https://stackoverflow.com/questions/23123138/perform-debounce-in-react-js
@@ -18,7 +19,7 @@ class Weather extends Component {
   // make it work by night :)
 
   onChangeInput(event) {
-    event.preventDefault();
+    event.persist();
     let currentCityVal = this.currentCity.value;
     this.props.onLoadSingleCity(currentCityVal);
   }
@@ -63,7 +64,7 @@ class Weather extends Component {
           Temperature : {convertedTemp}
         </div>{" "}
         <br />
-        <div className="h6 alert alert-info"> Humidity :{wprop.humidity}</div>
+        <div className="h6 alert alert-info"> Humidity :{wprop.main.humidity}</div>
       </div>
     );
   }
@@ -74,7 +75,7 @@ class Weather extends Component {
         <header>
           <h3 className="h6">Search Weather</h3>
         </header>
-        <form action="#" className="search-form">
+        <form action="#" className="search-form" onSubmit = {this.onChangeInput}>
           <div className="form-group">
             <input
               name="currentCity"
