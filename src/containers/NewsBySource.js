@@ -29,7 +29,7 @@ class NewsBySource extends Component {
 }
 
 NewsBySource.propTypes ={
-  data :PropTypes.object.isRequired,
+  data :PropTypes.array,
   fetchFromNewsAPI : PropTypes.func.isRequired,
   isSideBarList : PropTypes.bool,
   source :PropTypes.string

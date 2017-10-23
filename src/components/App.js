@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
-import Weather from '../containers/Weather';
 import HomePage from '../containers/HomePage';
 import CulturePage from '../containers/CulturePage';
 import EntertainmentPage from '../containers/EntertainmentPage';

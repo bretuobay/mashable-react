@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NewsBySource from "./NewsBySource";
+import Weather from "./Weather";
 
 class HomePage extends Component {
   constructor(props) {
@@ -26,27 +27,10 @@ class HomePage extends Component {
         </main>
 
         <aside className="col-lg-4">
-          <div className="widget latest-posts">
-            <header>
-              <h3 className="h6">Latest From Our Sources</h3>
-            </header>
-            <div className="blog-posts">
-              <ul className="list-group">
-                {sideMashList.map(function(source, index) {
-                  return (
-                    <li className="list-group-item" key={index}>
-                      <h6> {source.label}</h6>
-                      <NewsBySource
-                        key={index}
-                        isSideBarList={true}
-                        source={source.id}
-                      >
-                        {" "}
-                      </NewsBySource>
-                    </li>
-                  );
-                })}
-              </ul>
+          <div className="widget search">
+            <Weather currentCity="Kumasi" />
+            <div className="widget latest-posts">
+            <NewsBySource source="techcrunch" isSideBarList={true} />
             </div>
           </div>
         </aside>
