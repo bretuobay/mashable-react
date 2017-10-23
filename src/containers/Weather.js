@@ -22,7 +22,8 @@ class Weather extends Component {
     event.persist();
    // event.preventDefault();
     let currentCityVal = this.currentCity.value;
-    this.props.onLoadSingleCity(currentCityVal);
+
+    currentCityVal.length >= 2? this.props.onLoadSingleCity(currentCityVal) : console.log(' City length must be greater than 2') ;
   }
 
   destructDataByCity(weatherProps) {
