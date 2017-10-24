@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { getFormattedDateTime } from "../utils/dateHelper";
 
 export const NewsRow = ({ articles, isSideBarList }) => {
 
@@ -37,7 +38,7 @@ export const NewsRow = ({ articles, isSideBarList }) => {
                 </a>
               </div>
               <div className="post-details">
-                <div className="date meta-last">{article.publishedAt}</div>
+                <div className="date meta-last">{ getFormattedDateTime(article.publishedAt) }</div>
               </div>
               <a href={article.url} className="animsition-link">
                 <h3 className="h4 w-100">{article.title}</h3>

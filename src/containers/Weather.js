@@ -43,6 +43,7 @@ class Weather extends Component {
     } = weatherProps);
   }
 
+  
   roundN(numInput, decimalPlaces) {
     let tempVal =
       Math.round(numInput * Math.pow(10, decimalPlaces)) /
