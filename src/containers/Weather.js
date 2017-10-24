@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { fetchSingleCityWeather } from "../actions/weatherActions";
 import { debounce } from "lodash";
+import GoogleMapReact from "google-map-react";
+import { GoogleMapsWrapper } from "../components/GoogleMapsWrapper";
 
 class Weather extends Component {
   constructor(props) {
@@ -11,7 +13,7 @@ class Weather extends Component {
 
   componentDidMount() {
     this.props.onLoadSingleCity(this.props.currentCity);
-    this.onChangeInput = debounce(this.onChangeInput.bind(this),500);
+    this.onChangeInput = debounce(this.onChangeInput.bind(this), 500);
   }
   // check out the following link
   //https://stackoverflow.com/questions/23123138/perform-debounce-in-react-js
@@ -20,10 +22,12 @@ class Weather extends Component {
 
   onChangeInput(event) {
     event.persist();
-   // event.preventDefault();
+    // event.preventDefault();
     let currentCityVal = this.currentCity.value;
 
-    currentCityVal.length >= 2? this.props.onLoadSingleCity(currentCityVal) : console.log(' City length must be greater than 2') ;
+    currentCityVal.length >= 2
+      ? this.props.onLoadSingleCity(currentCityVal)
+      : console.log(" City length must be greater than 2");
   }
 
   destructDataByCity(weatherProps) {
@@ -43,7 +47,6 @@ class Weather extends Component {
     } = weatherProps);
   }
 
-  
   roundN(numInput, decimalPlaces) {
     let tempVal =
       Math.round(numInput * Math.pow(10, decimalPlaces)) /
@@ -57,6 +60,15 @@ class Weather extends Component {
 
     let convertedTemp = (this.roundN(wprop.main.temp, 2) - 273.15).toFixed(2);
 
+    let defaultProps = {
+      center: { lat: wprop.coord.lat, lng: wprop.coord.lon },
+      zoom: 7
+    };
+    let mapStyle = {
+      height: "300px",
+      width: "100%"
+    };
+
     return (
       <div className="pt-5">
         <div className="h6"> Currently displaying </div> <br />
@@ -67,7 +79,22 @@ class Weather extends Component {
           Temperature : {convertedTemp}
         </div>{" "}
         <br />
-        <div className="h6 alert alert-info"> Humidity :{wprop.main.humidity}</div>
+        <div className="h6 alert alert-info">
+          {" "}
+          Humidity :{wprop.main.humidity}
+        </div>
+        <div className="pt-5" style={mapStyle}>
+          <GoogleMapReact
+            center={defaultProps.center}
+            defaultZoom={defaultProps.zoom}
+          >
+            <GoogleMapsWrapper
+              lat={wprop.coord.lat}
+              lng={wprop.coord.lon}
+              text={wprop.name}
+            />
+          </GoogleMapReact>
+        </div>
       </div>
     );
   }
@@ -78,22 +105,22 @@ class Weather extends Component {
         <header>
           <h3 className="h6">Search Weather</h3>
         </header>
-        {/* <form action="#" className="search-form" onSubmit = {this.onChangeInput}> */}
-          <div className="form-group">
-            <input
-              name="currentCity"
-              id="currentCity"
-              ref={el => (this.currentCity = el)}
-              type="text"
-              defaultValue={this.props.currentCity}
-              onChange = {this.onChangeInput}
-              placeholder=" Search for City?"
-            />
-            <button type="submit" className="submit">
-              <i className="icon-search" />
-            </button>
-          </div>
-        {/* </form> */}
+
+        <div className="form-group">
+          <input
+            name="currentCity"
+            id="currentCity"
+            ref={el => (this.currentCity = el)}
+            type="text"
+            defaultValue={this.props.currentCity}
+            onChange={this.onChangeInput}
+            placeholder=" Search for City?"
+          />
+          <button type="submit" className="submit">
+            <i className="icon-search" />
+          </button>
+        </div>
+
         <div>
           {this.props.data ? this.renderCityWeather(this.props.data) : null}
         </div>
