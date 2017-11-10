@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NewsBySource from "./NewsBySource";
+import  { VideoSources } from "../utils/articleSources";
 
 class VideosPage extends Component {
   constructor(props) {
@@ -7,11 +8,7 @@ class VideosPage extends Component {
   }
 
   render() {
-    let sideMashList = [
-      { id: "daily-mail", label: "Daily Mail" },
-      { id: "football-italia", label: "Footbal Italia" },
-      { id: "business-insider-uk", label: "Business Insider UK " }
-    ];
+    let sideMashList = VideoSources;
 
     return (
       <div className="row">

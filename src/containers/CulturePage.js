@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NewsBySource from "./NewsBySource";
+import  { CultureSources } from "../utils/articleSources";
 
 
 class CulturePage extends Component {
@@ -8,11 +9,7 @@ class CulturePage extends Component {
   }
 
   render() {
-    let sideMashList = [
-      { id: "daily-mail", label: "Daily Mail" },
-      { id: "football-italia", label: "Footbal Italia" },
-      { id: "business-insider-uk", label: "Business Insider UK " }
-    ];
+    let sideMashList = CultureSources;
 
     return (
       <div className="row">

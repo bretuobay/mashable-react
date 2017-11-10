@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NewsBySource from "./NewsBySource";
+import  { EntertainmentSources } from "../utils/articleSources";
 
 
 class EntertainmentPage extends Component {
@@ -7,11 +8,7 @@ class EntertainmentPage extends Component {
     super(props);
   }
   render() {
-    let sideMashList = [
-      { id: "daily-mail", label: "Daily Mail" },
-      { id: "football-italia", label: "Footbal Italia" },
-      { id: "business-insider-uk", label: "Business Insider UK " }
-    ];
+    let sideMashList = EntertainmentSources;
 
     return (
       <div className="row">
