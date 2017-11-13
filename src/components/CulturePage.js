@@ -1,31 +1,23 @@
 import React, { Component } from "react";
-import NewsBySource from "./NewsBySource";
+import NewsBySource from "../containers/NewsBySource";
+import  { CultureSources } from "../utils/articleSources";
 
 
-class BusinessPage extends Component {
+class CulturePage extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-    //this.props.onLoadSingleSouceNews('techcrunch');
-  }
-
   render() {
-    let sideMashList = [
-      { id: "daily-mail", label: "Daily Mail" },
-      { id: "football-italia", label: "Footbal Italia" },
-      { id: "business-insider-uk", label: "Business Insider UK " }
-    ];
+    let sideMashList = CultureSources;
 
     return (
       <div className="row">
         <main className="posts-listing col-lg-8">
           <div className="container">
-            <NewsBySource source="business-insider" />
+            <NewsBySource source="daily-mail" />
           </div>
         </main>
-
         <aside className="col-lg-4">
           <div className="widget latest-posts">
             <header>
@@ -56,4 +48,4 @@ class BusinessPage extends Component {
   }
 }
 
-export default BusinessPage;
+export default CulturePage;

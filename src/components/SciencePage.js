@@ -1,23 +1,20 @@
 import React, { Component } from "react";
-import NewsBySource from "./NewsBySource";
+import NewsBySource from "../containers/NewsBySource";
+import  { ScienceSources } from "../utils/articleSources";
 
-class VideosPage extends Component {
+class SciencePage extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    let sideMashList = [
-      { id: "daily-mail", label: "Daily Mail" },
-      { id: "football-italia", label: "Footbal Italia" },
-      { id: "business-insider-uk", label: "Business Insider UK " }
-    ];
+    let sideMashList = ScienceSources;
 
     return (
       <div className="row">
         <main className="posts-listing col-lg-8">
           <div className="container">
-            <NewsBySource source="ign" />
+            <NewsBySource source="techcrunch" />
           </div>
         </main>
 
@@ -51,4 +48,4 @@ class VideosPage extends Component {
   }
 }
 
-export default VideosPage;
+export default SciencePage;

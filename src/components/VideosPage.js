@@ -1,26 +1,23 @@
 import React, { Component } from "react";
-import NewsBySource from "./NewsBySource";
+import NewsBySource from "../containers/NewsBySource";
+import  { VideoSources } from "../utils/articleSources";
 
-
-class CulturePage extends Component {
+class VideosPage extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    let sideMashList = [
-      { id: "daily-mail", label: "Daily Mail" },
-      { id: "football-italia", label: "Footbal Italia" },
-      { id: "business-insider-uk", label: "Business Insider UK " }
-    ];
+    let sideMashList = VideoSources;
 
     return (
       <div className="row">
         <main className="posts-listing col-lg-8">
           <div className="container">
-            <NewsBySource source="daily-mail" />
+            <NewsBySource source="ign" />
           </div>
         </main>
+
         <aside className="col-lg-4">
           <div className="widget latest-posts">
             <header>
@@ -51,4 +48,4 @@ class CulturePage extends Component {
   }
 }
 
-export default CulturePage;
+export default VideosPage;

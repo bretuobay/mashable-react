@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import NewsBySource from "./NewsBySource";
-import Weather from "./Weather";
+import NewsBySource from "../containers/NewsBySource";
+import Weather from "../containers/Weather";
+import  { MainSources } from "../utils/articleSources";
 
 class HomePage extends Component {
   constructor(props) {
@@ -10,11 +11,7 @@ class HomePage extends Component {
   componentDidMount() {}
 
   render() {
-    let sideMashList = [
-      { id: "daily-mail", label: "Daily Mail" },
-      { id: "football-italia", label: "Footbal Italia" },
-      { id: "business-insider-uk", label: "Business Insider UK " }
-    ];
+    let sideMashList = MainSources;
 
     return (
       <div className="row">
