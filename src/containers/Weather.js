@@ -60,7 +60,7 @@ class Weather extends Component {
 
     let convertedTemp = (this.roundN(wprop.main.temp, 2) - 273.15).toFixed(2);
 
-    let defaultProps = {
+    let configProps = {
       center: { lat: wprop.coord.lat, lng: wprop.coord.lon },
       zoom: 7
     };
@@ -85,8 +85,8 @@ class Weather extends Component {
         </div>
         <div className="pt-5" style={mapStyle}>
           <GoogleMapReact
-            center={defaultProps.center}
-            defaultZoom={defaultProps.zoom}
+            center={configProps.center}
+            defaultZoom={configProps.zoom}
           >
             <GoogleMapsWrapper
               lat={wprop.coord.lat}
