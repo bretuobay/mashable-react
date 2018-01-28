@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NewsBySource from "../containers/NewsBySource";
 import Weather from "../containers/Weather";
+import CurrencyRates from "../containers/CurrencyRates"
 import  { MainSources } from "../utils/articleSources";
 
 class HomePage extends Component {
@@ -27,7 +28,7 @@ class HomePage extends Component {
           <div className="widget search">
             <Weather currentCity="Kumasi" />
             <div className="widget latest-posts">
-            <NewsBySource source="techcrunch" isSideBarList={true} />
+            <CurrencyRates currencyRatesList="EURUSD,GBPJPY,AUDUSD"/>
             </div>
           </div>
         </aside>

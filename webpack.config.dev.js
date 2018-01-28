@@ -20,6 +20,16 @@ export default {
     publicPath: '/',
     filename: 'bundle.js'
   },
+  devServer: {
+    proxy: {
+      "/quotes": {
+      target: 'https://forex.1forge.com/1.0.2/quotes',
+      pathRewrite: { '^/quotes': '' },
+      changeOrigin: true,
+      secure: false
+      }
+    }
+},
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'), // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)

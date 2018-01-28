@@ -20,8 +20,6 @@ export const fetchSingleSourceNews = (source) => {
       'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     }
   }
-     
-  //let source ='mashable';
   
   return (dispatch) => {
     return axios.get(`/?source=${source}&sortBy=latest&apiKey=${appConstant.NEWS_API_KEY}`,Config)
