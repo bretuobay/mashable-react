@@ -1,6 +1,5 @@
 import * as types from '../constants/actionTypes';
 import * as appConstant from '../constants/appConstants';
-
 import axios from 'axios';
 
 export const getWeatherSuccessAction = (data) => {
@@ -9,11 +8,8 @@ export const getWeatherSuccessAction = (data) => {
     data : data
   };
 };
-
-
 export const fetchSingleCityWeather = (city) => {
   axios.defaults.baseURL = appConstant.WEATHER_API_URL_ENDPOINT;
- // let placeholderCity = 'Kumasi';
   return (dispatch) => {
     return axios.get(`/weather?q=${city}&appid=${appConstant.WEATHER_API_KEY}`)
       .then(response => {

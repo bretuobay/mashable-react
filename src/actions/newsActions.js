@@ -1,6 +1,5 @@
 import * as types from '../constants/actionTypes';
 import * as appConstant from '../constants/appConstants';
-
 import axios from 'axios';
 
 export const getNewsSuccessAction = (data) => {
@@ -9,20 +8,10 @@ export const getNewsSuccessAction = (data) => {
     data : data
   };
 };
-
-
 export const fetchSingleSourceNews = (source) => {
   axios.defaults.baseURL = appConstant.NEWS_API_URL_ENDPOINT;
-
-
-  const Config = {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-    }
-  }
-  
   return (dispatch) => {
-    return axios.get(`/?source=${source}&sortBy=latest&apiKey=${appConstant.NEWS_API_KEY}`,Config)
+    return axios.get(`/?source=${source}&sortBy=latest&apiKey=${appConstant.NEWS_API_KEY}`)
       .then(response => {
         dispatch(getNewsSuccessAction(response.data))
       })
