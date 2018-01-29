@@ -28,6 +28,7 @@ class HomePage extends Component {
           <div className="widget search">
             <Weather currentCity="Kumasi" />
             <div className="widget latest-posts">
+            <h6>Currency Exchange</h6>
             <CurrencyRates currencyRatesList="EURUSD,GBPJPY,AUDUSD"/>
             </div>
           </div>
