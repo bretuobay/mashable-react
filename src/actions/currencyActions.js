@@ -10,7 +10,6 @@ export const getCurrencySuccessAction = (data) => {
   };
 };
 
-
 export const fetchCurrencyRates = (exchangeRatesStr) => {
   axios.defaults.baseURL = appConstant.CURRENCY_API_URL_ENDPOINT;
   const Config = {
