@@ -14,7 +14,7 @@ class EntertainmentPage extends Component {
       <div className="row">
         <main className="posts-listing col-lg-8">
           <div className="container">
-            <NewsBySource source="daily-mail" />
+            <NewsBySource source="the-lad-bible" />
           </div>
         </main>
 
