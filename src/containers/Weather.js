@@ -15,14 +15,10 @@ class Weather extends Component {
     this.props.onLoadSingleCity(this.props.currentCity);
     this.onChangeInput = debounce(this.onChangeInput.bind(this), 500);
   }
-  // check out the following link
-  //https://stackoverflow.com/questions/23123138/perform-debounce-in-react-js
-  // not worth using something like redux form for something so basic
-  // make it work by night :)
 
   onChangeInput(event) {
     event.persist();
-    // event.preventDefault();
+
     let currentCityVal = this.currentCity.value;
 
     currentCityVal.length >= 2
@@ -30,22 +26,6 @@ class Weather extends Component {
       : console.log(" City length must be greater than 2");
   }
 
-  destructDataByCity(weatherProps) {
-    let coord, weather, base, main, wind, clouds, dt, sys, id, name, cod;
-    return ({
-      coord,
-      weather,
-      base,
-      main,
-      wind,
-      clouds,
-      dt,
-      sys,
-      id,
-      name,
-      cod
-    } = weatherProps);
-  }
 
   roundN(numInput, decimalPlaces) {
     let tempVal =
@@ -56,7 +36,7 @@ class Weather extends Component {
   }
 
   renderCityWeather(weatherProps) {
-    let wprop = this.destructDataByCity(weatherProps);
+    let wprop =  {...weatherProps} 
 
     let convertedTemp = (this.roundN(wprop.main.temp, 2) - 273.15).toFixed(2);
 
