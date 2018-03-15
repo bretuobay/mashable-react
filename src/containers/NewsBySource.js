@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchSingleSourceNews } from "../actions/newsActions";
+import { fetchSingleSourceNews } from "../store/actions/newsActions";
 import { NewsRow } from "../components/NewsRow";
 import { retrieveDataFromStore } from "../utils/articlesDataMapper";
 import PropTypes from "prop-types";

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { fetchSingleCityWeather } from "../actions/weatherActions";
+import { fetchSingleCityWeather } from "../store/actions/weatherActions";
 import { debounce } from "lodash";
 import GoogleMapReact from "google-map-react";
 import { GoogleMapsWrapper } from "../components/GoogleMapsWrapper";

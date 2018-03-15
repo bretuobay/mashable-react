@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { CurrencyRow } from "../components/CurrencyRow";
-import { fetchCurrencyRates } from "../actions/currencyActions";
+import { fetchCurrencyRates } from "../store/actions/currencyActions";
 import PropTypes from "prop-types";
 
 class CurrencyRates extends Component {
