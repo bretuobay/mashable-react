@@ -1,21 +1,10 @@
-import * as _ from "lodash";
-
+import {findKey, isArray, get} from "lodash";
+// TODO : Refactor to reduce complexity with reducers by reshaping object
 export const retrieveDataFromStore = (state, ownProps) => {
-  let storeNewsData = state.currentNews;
-
-  if (storeNewsData) {
-    return storeNewsData
-      .map(data => {
-        let keyval = _.findKey(data, ["source", ownProps.source]);
-
-        if (keyval) {
-          return data[keyval].articles;
-        } else {
-          return [];
-        }
-      })
-      .filter(stateData => {
-        return _.isArray(stateData) && !_.isEmpty(stateData);
-      })[0];
-  }
+  get(state, 'currentNews', [])
+    .map(data =>
+      findKey(data, ["source", ownProps.source]) ? data[keyval].articles : []
+    ).filter(stateData =>
+      isArray(stateData) && !_.isEmpty(stateData)
+    )[0];
 };
