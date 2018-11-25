@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 
 class NewsBySource extends Component {
  componentDidMount() {
+   console.log(this.props.source)
     this.props.fetchFromNewsAPI(this.props.source);
   }
 
