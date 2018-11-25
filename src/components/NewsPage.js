@@ -1,7 +1,7 @@
 import React from "react";
 import NewsBySource from "../containers/NewsBySource";
 import Weather from "../containers/Weather";
-import CurrencyRates from "../containers/CurrencyRates"
+import CurrencyRates from "../containers/CurrencyRates";
 
 const NewsPage = ({bannerTitle, mainSource, sideBarSources, isHomePage = false}) => (
     <div className="row">
