@@ -1,5 +1,6 @@
 import {GET_NEWS_DATA_SUCCESS, GET_NEWS_DATA_FAILURE} from '../../constants/actionTypes';
 import {NEWS_API_URL_ENDPOINT, NEWS_API_KEY} from '../../constants/appConstants';
+import {runApiCall} from '../../utils/apiService';
 
 export const getNewsSuccessAction = data => ({
   type: GET_NEWS_DATA_SUCCESS,

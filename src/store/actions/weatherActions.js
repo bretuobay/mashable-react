@@ -1,5 +1,6 @@
 import {GET_WEATHER_SUCCESS, GET_WEATHER_FAILURE} from '../../constants/actionTypes';
 import {WEATHER_API_URL_ENDPOINT, WEATHER_API_KEY}  from '../../constants/appConstants';
+import {runApiCall} from '../../utils/apiService';
 
 export const getWeatherSuccessAction = data => ({
     type: GET_WEATHER_SUCCESS,
