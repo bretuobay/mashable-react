@@ -1,25 +1,28 @@
-import * as types from '../../constants/actionTypes';
-import * as appConstant from '../../constants/appConstants';
-import axios from 'axios';
 
-export const getCurrencySuccessAction = (data) => {
-  return {
-    type: types.GET_CURRENCY_DATA_SUCCESS,
-    data : data
-  };
-};
-export const fetchCurrencyRates = (exchangeRatesStr) => {
-  axios.defaults.baseURL = appConstant.CURRENCY_API_URL_ENDPOINT;
-  return (dispatch) => {
-    return axios.get(`/quotes?pairs=${exchangeRatesStr}&api_key=${appConstant.CURRENCY_API_KEY}`)
-      .then(response => {
-        dispatch(getCurrencySuccessAction(response.data))
-      })
-      .catch(error => {
-        throw(error);
-      });
-  };
-};
+import {GET_CURRENCY_DATA_SUCCESS, GET_CURRENCY_DATA_FAILURE} from '../../constants/actionTypes';
+import {CURRENCY_API_KEY, CURRENCY_API_URL_ENDPOINT} from '../../constants/appConstants';
+import {runApiCall} from '../../utils/apiService';
+
+export const getCurrencySuccessAction = data => ({
+  type: GET_CURRENCY_DATA_SUCCESS,
+  data
+});
+
+export const getCurrencyFailureAction = data => ({
+  type: GET_CURRENCY_DATA_FAILURE,
+  data
+});
+
+export const fetchCurrencyRates = exchangeRatesStr => dispatch =>
+  runApiCall({
+    apiEndPoint: CURRENCY_API_URL_ENDPOINT,
+    urlQuery: `/quotes?pairs=${exchangeRatesStr}&api_key=${CURRENCY_API_KEY}`,
+    dispatch,
+    successAction: getCurrencySuccessAction,
+    failureAction: getCurrencyFailureAction
+  });
+
+
 
 
 

@@ -1,27 +1,25 @@
-import * as types from '../../constants/actionTypes';
-import * as appConstant from '../../constants/appConstants';
-import axios from 'axios';
+import {GET_WEATHER_SUCCESS, GET_WEATHER_FAILURE} from '../../constants/actionTypes';
+import {WEATHER_API_URL_ENDPOINT, WEATHER_API_KEY}  from '../../constants/appConstants';
 
-export const getWeatherSuccessAction = (data) => {
-  return {
-    type: types.GET_WEATHER_SUCCESS,
-    data : data
-  };
-};
-export const fetchSingleCityWeather = (city) => {
-  axios.defaults.baseURL = appConstant.WEATHER_API_URL_ENDPOINT;
- 
-  return (dispatch) => {
-    return axios.get(`/weather?q=${city}&appid=${appConstant.WEATHER_API_KEY}`)
-      .then(response => {
-        dispatch(getWeatherSuccessAction(response.data))
-      })
-      .catch(error => {
-        throw(error);
-      });
-  };
-};
+export const getWeatherSuccessAction = data => ({
+    type: GET_WEATHER_SUCCESS,
+    data
+});
 
+export const getWeatherFailureAction = data => ({
+  type: GET_WEATHER_FAILURE,
+  data
+});
+
+export const fetchSingleCityWeather = (city) => dispatch =>
+runApiCall({
+  apiEndPoint: WEATHER_API_URL_ENDPOINT,
+  urlQuery: `/weather?q=${city}&appid=${WEATHER_API_KEY}`,
+  dispatch,
+  successAction: getWeatherSuccessAction,
+  failureAction: getWeatherFailureAction
+});
+  
 
 
 
