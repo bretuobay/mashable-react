@@ -33,7 +33,7 @@
   "dependencies": {
     "axios": "0.16.2",
     "google-map-react": "0.25.0",
-    "lodash": "4.17.4",
+    "lodash": ">=4.17.5",
     "marker-clusterer-plus": "2.1.4",
     "object-assign": "4.1.0",
     "react": "16.0.0",
