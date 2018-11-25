@@ -7,7 +7,8 @@ import { CityWeatherInfo } from '../components/CityWeatherInfo';
 
 class Weather extends Component {
   componentDidMount() {
-    this.props.onLoadSingleCity(this.props.currentCity);
+    const {onLoadSingleCity, currentCity} = this.props;
+    onLoadSingleCity(currentCity);
     this.onChangeInput = debounce(this.onChangeInput.bind(this), 500);
   }
 

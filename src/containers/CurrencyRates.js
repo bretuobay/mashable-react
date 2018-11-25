@@ -6,7 +6,8 @@ import PropTypes from "prop-types";
 
 class CurrencyRates extends Component {
   componentDidMount() {
-    this.props.fetchCurrencyRates(this.props.currencyRatesList);
+    const {fetchCurrencyRates, currencyRatesList} = this.props;
+    fetchCurrencyRates(currencyRatesList);
   }
   
   render() {
