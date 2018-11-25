@@ -16,7 +16,7 @@ class Weather extends Component {
     event.persist();
     const {value} = this.currentCity;
      if(value.length >= 2){
-      this.props.onLoadSingleCity(currentCityVal);
+      this.props.onLoadSingleCity(value);
      }
   }
 
