@@ -12,7 +12,7 @@ class CurrencyRates extends Component {
   render() {
     return (
       <div>
-        {this.props.data ? <CurrencyRow currencies={this.props.data} /> : null}
+        {this.props.data && <CurrencyRow currencies={this.props.data} /> }
       </div>
     );
   }

@@ -4,38 +4,31 @@ import Weather from "../containers/Weather";
 import CurrencyRates from "../containers/CurrencyRates"
 import  { MainSources } from "../utils/articleSources";
 
-class HomePage extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {}
-
-  render() {
-    let sideMashList = MainSources;
-
-    return (
-      <div className="row">
-        <main className="posts-listing col-lg-8">
-          <div className="container">
-            <NewsBySource source="mashable" />
-            <NewsBySource source="daily-mail" />
-            <NewsBySource source="buzzfeed" />
+const HomePage = () =>
+  (
+   <div className="row">
+     <main className = "posts-listing col-lg-8" >
+       <div className = "container" > {
+         MainSources.map((source, index) => {
+          <NewsBySource 
+           source = {source.id}
+           key = {index}
+           isSideBarList = {false}
+           />
+         })
+       } 
+       </div> 
+       </main>
+      <aside className="col-lg-4">
+        <div className="widget search">
+          <Weather currentCity="Kumasi" />
+          <div className="widget latest-posts">
+          <h6>Currency Exchange</h6>
+          <CurrencyRates currencyRatesList="EURUSD,GBPJPY,AUDUSD"/>
           </div>
-        </main>
-
-        <aside className="col-lg-4">
-          <div className="widget search">
-            <Weather currentCity="Kumasi" />
-            <div className="widget latest-posts">
-            <h6>Currency Exchange</h6>
-            <CurrencyRates currencyRatesList="EURUSD,GBPJPY,AUDUSD"/>
-            </div>
           </div>
-        </aside>
-      </div>
-    );
-  }
-}
+      </aside>
+   </div>
+  );
 
-export default HomePage;
+  export default HomePage;

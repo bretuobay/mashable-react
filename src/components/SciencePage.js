@@ -2,22 +2,14 @@ import React, { Component } from "react";
 import NewsBySource from "../containers/NewsBySource";
 import  { ScienceSources } from "../utils/articleSources";
 
-class SciencePage extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    let sideMashList = ScienceSources;
-
-    return (
+const SciencePage = () => 
+   (
       <div className="row">
         <main className="posts-listing col-lg-8">
           <div className="container">
             <NewsBySource source="techcrunch" />
           </div>
         </main>
-
         <aside className="col-lg-4">
           <div className="widget latest-posts">
             <header>
@@ -25,7 +17,7 @@ class SciencePage extends Component {
             </header>
             <div className="blog-posts">
               <ul className="list-group">
-                {sideMashList.map(function(source, index) {
+                {ScienceSources.map(function(source, index) {
                   return (
                     <li className="list-group-item" key={index}>
                       <h6> {source.label}</h6>
@@ -34,7 +26,6 @@ class SciencePage extends Component {
                         isSideBarList={true}
                         source={source.id}
                       >
-                        {" "}
                       </NewsBySource>
                     </li>
                   );
@@ -44,8 +35,6 @@ class SciencePage extends Component {
           </div>
         </aside>
       </div>
-    );
-  }
-}
+);
 
 export default SciencePage;

@@ -1,23 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import NewsBySource from "../containers/NewsBySource";
 import  { VideoSources } from "../utils/articleSources";
 
-class VideosPage extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    let sideMashList = VideoSources;
-
-    return (
+const VideosPage = () => (
       <div className="row">
         <main className="posts-listing col-lg-8">
           <div className="container">
             <NewsBySource source="ign" />
           </div>
         </main>
-
         <aside className="col-lg-4">
           <div className="widget latest-posts">
             <header>
@@ -25,7 +16,7 @@ class VideosPage extends Component {
             </header>
             <div className="blog-posts">
               <ul className="list-group">
-                {sideMashList.map(function(source, index) {
+                {VideoSources.map(function(source, index) {
                   return (
                     <li className="list-group-item" key={index}>
                       <h6> {source.label}</h6>
@@ -34,7 +25,6 @@ class VideosPage extends Component {
                         isSideBarList={true}
                         source={source.id}
                       >
-                        {" "}
                       </NewsBySource>
                     </li>
                   );
@@ -45,7 +35,5 @@ class VideosPage extends Component {
         </aside>
       </div>
     );
-  }
-}
-
-export default VideosPage;
+    
+  export default VideosPage;

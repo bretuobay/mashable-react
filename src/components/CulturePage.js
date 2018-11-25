@@ -1,17 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import NewsBySource from "../containers/NewsBySource";
 import  { CultureSources } from "../utils/articleSources";
 
-
-class CulturePage extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    let sideMashList = CultureSources;
-
-    return (
+const CulturePage = () => 
+  (
       <div className="row">
         <main className="posts-listing col-lg-8">
           <div className="container">
@@ -25,7 +17,7 @@ class CulturePage extends Component {
             </header>
             <div className="blog-posts">
               <ul className="list-group">
-                {sideMashList.map(function(source, index) {
+                {CultureSources.map(function(source, index) {
                   return (
                     <li className="list-group-item" key={index}>
                       <h6> {source.label}</h6>
@@ -34,7 +26,6 @@ class CulturePage extends Component {
                         isSideBarList={true}
                         source={source.id}
                       >
-                        {" "}
                       </NewsBySource>
                     </li>
                   );
@@ -44,8 +35,7 @@ class CulturePage extends Component {
           </div>
         </aside>
       </div>
-    );
-  }
-}
+);
 
 export default CulturePage;
+

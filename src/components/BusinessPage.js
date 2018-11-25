@@ -1,27 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import NewsBySource from "../containers/NewsBySource";
 import  { BusinessSources } from "../utils/articleSources";
 
-class BusinessPage extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    //this.props.onLoadSingleSouceNews('techcrunch');
-  }
-
-  render() {
-    let sideMashList = BusinessSources;
-
-    return (
+const BusinessPage = () => 
+   (
       <div className="row">
         <main className="posts-listing col-lg-8">
           <div className="container">
             <NewsBySource source="business-insider" />
           </div>
         </main>
-
         <aside className="col-lg-4">
           <div className="widget latest-posts">
             <header>
@@ -29,7 +17,7 @@ class BusinessPage extends Component {
             </header>
             <div className="blog-posts">
               <ul className="list-group">
-                {sideMashList.map(function(source, index) {
+                {BusinessSources.map(function(source, index) {
                   return (
                     <li className="list-group-item" key={index}>
                       <h6> {source.label}</h6>
@@ -49,7 +37,4 @@ class BusinessPage extends Component {
         </aside>
       </div>
     );
-  }
-}
-
-export default BusinessPage;
+ export default BusinessPage;   

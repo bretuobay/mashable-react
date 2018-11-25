@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { debounce, get } from "lodash";
+import { debounce } from "lodash";
 import { fetchSingleCityWeather } from "../store/actions/weatherActions";
 import { CityWeatherInfo } from '../components/CityWeatherInfo';
 

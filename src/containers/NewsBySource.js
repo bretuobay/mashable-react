@@ -13,12 +13,12 @@ class NewsBySource extends Component {
   render() {
     return (
       <div>
-        {this.props.data ? (
+        {this.props.data && 
           <NewsRow
             articles={this.props.data}
             isSideBarList={this.props.isSideBarList}
           />
-        ) : null}
+        }
       </div>
     );
   }

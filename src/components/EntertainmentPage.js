@@ -1,23 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import NewsBySource from "../containers/NewsBySource";
 import  { EntertainmentSources } from "../utils/articleSources";
 
 
-class EntertainmentPage extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    let sideMashList = EntertainmentSources;
-
-    return (
-      <div className="row">
+const  EntertainmentPage = () =>
+  (
+     <div className="row">
         <main className="posts-listing col-lg-8">
           <div className="container">
             <NewsBySource source="the-lad-bible" />
           </div>
-        </main>
-
+      </main>
         <aside className="col-lg-4">
           <div className="widget latest-posts">
             <header>
@@ -25,7 +18,7 @@ class EntertainmentPage extends Component {
             </header>
             <div className="blog-posts">
               <ul className="list-group">
-                {sideMashList.map(function(source, index) {
+                {EntertainmentSources.map(function(source, index) {
                   return (
                     <li className="list-group-item" key={index}>
                       <h6> {source.label}</h6>
@@ -34,7 +27,6 @@ class EntertainmentPage extends Component {
                         isSideBarList={true}
                         source={source.id}
                       >
-                        {" "}
                       </NewsBySource>
                     </li>
                   );
@@ -44,8 +36,6 @@ class EntertainmentPage extends Component {
           </div>
         </aside>
       </div>
-    );
-  }
-}
+);
 
 export default EntertainmentPage;
