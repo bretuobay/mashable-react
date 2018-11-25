@@ -6,11 +6,7 @@ import { retrieveDataFromStore } from "../utils/articlesDataMapper";
 import PropTypes from "prop-types";
 
 class NewsBySource extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
+ componentDidMount() {
     this.props.fetchFromNewsAPI(this.props.source);
   }
 
@@ -28,24 +24,19 @@ class NewsBySource extends Component {
   }
 }
 
-NewsBySource.propTypes ={
+NewsBySource.propTypes = {
   data :PropTypes.array,
   fetchFromNewsAPI : PropTypes.func.isRequired,
   isSideBarList : PropTypes.bool,
   source :PropTypes.string
-
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchFromNewsAPI: source => dispatch(fetchSingleSourceNews(source))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  fetchFromNewsAPI: source => dispatch(fetchSingleSourceNews(source))
+});
 
-const mapStateToProps = (state, ownProps) => {
-  return {
+const mapStateToProps = (state, ownProps) => ({
     data: retrieveDataFromStore(state, ownProps)
-  };
-};
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsBySource);

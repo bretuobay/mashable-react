@@ -2,15 +2,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { fetchSingleCityWeather } from "../store/actions/weatherActions";
-import { debounce } from "lodash";
+import { debounce, get } from "lodash";
 import GoogleMapReact from "google-map-react";
 import { GoogleMapsWrapper } from "../components/GoogleMapsWrapper";
 
-class Weather extends Component {
-  constructor(props) {
-    super(props);
-  }
 
+const mapStyle = {
+  height: "300px",
+  width: "100%"
+};
+
+
+class Weather extends Component {
   componentDidMount() {
     this.props.onLoadSingleCity(this.props.currentCity);
     this.onChangeInput = debounce(this.onChangeInput.bind(this), 500);
@@ -18,17 +21,14 @@ class Weather extends Component {
 
   onChangeInput(event) {
     event.persist();
-
-    let currentCityVal = this.currentCity.value;
-
-    currentCityVal.length >= 2
-      ? this.props.onLoadSingleCity(currentCityVal)
-      : console.log(" City length must be greater than 2");
+    const {value} = this.currentCity;
+     if(value.length >= 2){
+      this.props.onLoadSingleCity(currentCityVal);
+     }
   }
 
-
   roundN(numInput, decimalPlaces) {
-    let tempVal =
+    const tempVal =
       Math.round(numInput * Math.pow(10, decimalPlaces)) /
       Math.pow(10, decimalPlaces);
 
@@ -36,23 +36,19 @@ class Weather extends Component {
   }
 
   renderCityWeather(weatherProps) {
-    let wprop =  {...weatherProps} 
-
-    let convertedTemp = (this.roundN(wprop.main.temp, 2) - 273.15).toFixed(2);
-
-    let configProps = {
-      center: { lat: wprop.coord.lat, lng: wprop.coord.lon },
+    const convertedTemp = (this.roundN(get(weatherProps, 'main.temp', 0), 2) - 273.15).toFixed(2);
+    const configProps = {
+      center: { 
+        lat: get(weatherProps,'coord.lat', 0),
+        lng: get(weatherProps,'coord.lon', 0)
+      },
       zoom: 7
     };
-    let mapStyle = {
-      height: "300px",
-      width: "100%"
-    };
-
+    
     return (
       <div className="pt-5">
         <div className="h6"> Currently displaying </div> <br />
-        <div className="h6 alert alert-warning"> City : {wprop.name}</div>{" "}
+        <div className="h6 alert alert-warning"> City : {weatherProps.name}</div>{" "}
         <br />
         <div className="h6 alert alert-success">
           {" "}
@@ -61,7 +57,7 @@ class Weather extends Component {
         <br />
         <div className="h6 alert alert-info">
           {" "}
-          Humidity :{wprop.main.humidity}
+          Humidity :{weatherProps.main.humidity}
         </div>
         <div className="pt-5" style={mapStyle}>
           <GoogleMapReact
@@ -69,9 +65,9 @@ class Weather extends Component {
             defaultZoom={configProps.zoom}
           >
             <GoogleMapsWrapper
-              lat={wprop.coord.lat}
-              lng={wprop.coord.lon}
-              text={wprop.name}
+              lat={weatherProps.coord.lat}
+              lng={weatherProps.coord.lon}
+              text={weatherProps.name}
             />
           </GoogleMapReact>
         </div>
@@ -115,18 +111,12 @@ Weather.propTypes = {
   currentCity: PropTypes.string
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onLoadSingleCity: currentCity =>
-      dispatch(fetchSingleCityWeather(currentCity))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  onLoadSingleCity: currentCity => dispatch(fetchSingleCityWeather(currentCity))
+});
 
-const mapStateToProps = state => {
-  const weather = state.currentWeather;
-  return {
-    data: weather.data
-  };
-};
+const mapStateToProps = state => ({
+  data: state.currentWeather.data
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Weather);

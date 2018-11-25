@@ -5,14 +5,10 @@ import { fetchCurrencyRates } from "../store/actions/currencyActions";
 import PropTypes from "prop-types";
 
 class CurrencyRates extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.fetchCurrencyRates(this.props.currencyRatesList);
   }
-
+  
   render() {
     return (
       <div>
@@ -28,17 +24,12 @@ CurrencyRates.propTypes = {
   fetchCurrencyRates: PropTypes.func.isRequired
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchCurrencyRates: exchangeRatesStr =>
-      dispatch(fetchCurrencyRates(exchangeRatesStr))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+    fetchCurrencyRates: exchangeRatesStr => dispatch(fetchCurrencyRates(exchangeRatesStr))
+});
 
-const mapStateToProps = (state, ownProps) => {
-  return {
+const mapStateToProps = state => ({
     data: state.currencyReducer.currencyRates
-  };
-};
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrencyRates);
