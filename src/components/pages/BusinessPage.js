@@ -5,7 +5,7 @@ import NewsPage from "../NewsPage";
 const BusinessPage = () =>
  (
   <NewsPage 
-    bannerTitle="Latest on Business"
+    sideBarTitle="Latest on Business"
     mainSource="business-insider"
     sideBarSources={BusinessSources} 
    />

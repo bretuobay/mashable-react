@@ -5,7 +5,7 @@ import NewsPage from "../NewsPage";
 const SciencePage = () => 
 (
   <NewsPage 
-    bannerTitle="Latest on Science"
+    sideBarTitle="Latest on Science"
     mainSource="techcrunch"
     sideBarSources={ScienceSources} 
    />

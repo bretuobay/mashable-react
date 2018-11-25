@@ -3,7 +3,7 @@ import NewsBySource from "../containers/NewsBySource";
 import Weather from "../containers/Weather";
 import CurrencyRates from "../containers/CurrencyRates";
 
-const NewsPage = ({bannerTitle, mainSource, sideBarSources, isHomePage = false}) => (
+const NewsPage = ({sideBarTitle, mainSource, sideBarSources, isHomePage = false}) => (
     <div className="row">
         <main className="posts-listing col-lg-8">
           <div className="container">
@@ -31,7 +31,7 @@ const NewsPage = ({bannerTitle, mainSource, sideBarSources, isHomePage = false})
           :
           <div className="widget latest-posts">
             <header>
-              <h3 className="h6">{bannerTitle}</h3>
+              <h3 className="h6">{sideBarTitle}</h3>
             </header>
             <div className="blog-posts">
               <ul className="list-group">

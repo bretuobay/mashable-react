@@ -5,7 +5,7 @@ import NewsPage from "../NewsPage";
 const  EntertainmentPage = () =>
 (
   <NewsPage 
-    bannerTitle="Latest on Entertainment"
+    sideBarTitle="Latest on Entertainment"
     mainSource="the-lad-bible"
     sideBarSources={EntertainmentSources} 
    />

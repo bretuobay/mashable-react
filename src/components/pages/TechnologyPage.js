@@ -5,7 +5,7 @@ import NewsPage from "../NewsPage";
 const TechnologyPage = () =>
  (
   <NewsPage 
-    bannerTitle="Latest on Technology"
+    sideBarTitle="Latest on Technology"
     mainSource="ars-technica"
     sideBarSources={TechnologySources} 
    />

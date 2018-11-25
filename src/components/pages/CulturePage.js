@@ -5,7 +5,7 @@ import NewsPage from "../NewsPage";
 const CulturePage = () => 
  (
   <NewsPage 
-    bannerTitle="Latest on Culture"
+    sideBarTitle="Latest on Culture"
     mainSource="daily-mail"
     sideBarSources={CultureSources} 
    />

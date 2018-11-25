@@ -5,7 +5,7 @@ import NewsPage from "../NewsPage";
 const VideosPage = () =>
   ( 
     <NewsPage
-     bannerTitle="Latest Videos"
+    sideBarTitle="Latest Videos"
     mainSource="ign"
     sideBarSources={VideoSources}
     />
