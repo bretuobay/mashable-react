@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {get} from 'lodash';
 import GoogleMapReact from "google-map-react";
 import {roundN} from '../utils/weatherHelper';
@@ -45,4 +46,8 @@ export const CityWeatherInfo = ({weatherProps}) => {
         </div>
       </div>
     );
-  }
+  };
+
+  CityWeatherInfo.propTypes = {
+    weatherProps: PropTypes.any
+  };

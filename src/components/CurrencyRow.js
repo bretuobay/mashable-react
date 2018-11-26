@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 
 const cssStyles = {
@@ -23,4 +24,8 @@ export const CurrencyRow = ({currencies}) => {
       })}
     </ul>
   );
+};
+
+CurrencyRow.propTypes = {
+  currencies: PropTypes.any
 };

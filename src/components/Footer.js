@@ -1,9 +1,6 @@
 import React from 'react';
 
-export const Footer = (props) => {
-
-return(
-   
+export const Footer = () => 
     <footer className="main-footer">
        <div className="container">
          <div className="row">
@@ -74,5 +71,3 @@ return(
      </footer>
     
 
-);
-}

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import NewsBySource from "../containers/NewsBySource";
 import Weather from "../containers/Weather";
 import CurrencyRates from "../containers/CurrencyRates";
@@ -55,5 +56,11 @@ const NewsPage = ({sideBarTitle, mainSource, sideBarSources, isHomePage = false}
         </aside>
       </div>
 );
+NewsPage.propTypes = {
+  sideBarTitle: PropTypes.any,
+  mainSource: PropTypes.any,
+  sideBarSources: PropTypes.any,
+  isHomePage: PropTypes.any
+};
 
 export default NewsPage;

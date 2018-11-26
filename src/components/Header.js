@@ -1,10 +1,9 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
 
-export const Header = (props)=>{
-    const activeStyle = { color: '#333' };
+const activeStyle = { color: '#333' };
   
-    return(
+export const Header = () => 
         <header className="header">
         <nav className="navbar navbar-toggleable-md">   
         <div className="container"> 
@@ -27,5 +26,3 @@ export const Header = (props)=>{
          
         </nav>
       </header>
-    );
-}
