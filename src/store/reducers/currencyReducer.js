@@ -1,14 +1,13 @@
 
-import { GET_CURRENCY_DATA_SUCCESS } from "../../constants/actionTypes";
-import * as _ from 'lodash';
+import { GET_CURRENCY_DATA_SUCCESS, GET_CURRENCY_DATA_FAILURE } from "../../constants/actionTypes";
 
 export default  (state = {}, action) => {
-
-  switch(action.type){
+  const {type,data} = action;
+  switch(type){
     case GET_CURRENCY_DATA_SUCCESS :
-  
-      return {  currencyRates: action.data }
-     default :
+      return {  currencyRates: data }
+    case GET_CURRENCY_DATA_FAILURE:  
+    default :
      return state;
   }
 }
