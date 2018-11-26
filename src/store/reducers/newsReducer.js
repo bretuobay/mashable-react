@@ -1,26 +1,18 @@
 
 import { GET_NEWS_DATA_SUCCESS } from "../../constants/actionTypes";
-import * as _ from 'lodash';
+import {get} from 'lodash';
 
 export default  (state = [], action) => {
-
-  switch(action.type){
-    case GET_NEWS_DATA_SUCCESS :
-    let newNewsMap = mapToNewsItemToSource(action.data);  
-    return [
-      ...state,
-      newNewsMap
-    ];
+  const {type, data} = action;
+  switch(type){
+    case GET_NEWS_DATA_SUCCESS : {
+      return {
+        ...state,
+        [get(data, 'source')]: get(data, 'articles')
+      };
+    }
      default :
      return state;
-  }
+  
 }
-
-function mapToNewsItemToSource(payloaddata){
-  
-    let newSourceArticles = _.keyBy([payloaddata], 'source');
-  
-    return newSourceArticles;
-      
-  }
-
+}
