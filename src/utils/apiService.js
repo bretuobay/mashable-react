@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {set} from 'lodash';
 
-export const runApiCall = ({
+export const runApiGetCall = ({
     apiEndPoint,
     urlQuery,
     dispatch,

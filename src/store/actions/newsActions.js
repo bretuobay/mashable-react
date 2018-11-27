@@ -1,19 +1,19 @@
 import {GET_NEWS_DATA_SUCCESS, GET_NEWS_DATA_FAILURE} from '../../constants/actionTypes';
 import {NEWS_API_URL_ENDPOINT, NEWS_API_KEY} from '../../constants/appConstants';
-import {runApiCall} from '../../utils/apiService';
+import {runApiGetCall} from '../../utils/apiService';
 
-export const getNewsSuccessAction = data => ({
+export const getNewsSuccessAction = payload => ({
   type: GET_NEWS_DATA_SUCCESS,
-  data
+  payload
 });
 
-export const getNewsFailureAction = data => ({
+export const getNewsFailureAction = payload => ({
   type: GET_NEWS_DATA_FAILURE,
-  data
+  payload
 });
 
 export const fetchSingleSourceNews = source => dispatch =>
-  runApiCall({
+  runApiGetCall({
     apiEndPoint: NEWS_API_URL_ENDPOINT,
     urlQuery: `/?source=${source}&sortBy=latest&apiKey=${NEWS_API_KEY}`,
     dispatch,

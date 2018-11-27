@@ -55,7 +55,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  data: state.currentWeather.data
+  data: state.currentWeather.weather
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Weather);

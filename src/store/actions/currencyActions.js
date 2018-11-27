@@ -1,20 +1,20 @@
 
 import {GET_CURRENCY_DATA_SUCCESS, GET_CURRENCY_DATA_FAILURE} from '../../constants/actionTypes';
 import {CURRENCY_API_KEY, CURRENCY_API_URL_ENDPOINT} from '../../constants/appConstants';
-import {runApiCall} from '../../utils/apiService';
+import {runApiGetCall} from '../../utils/apiService';
 
-export const getCurrencySuccessAction = data => ({
+export const getCurrencySuccessAction = payload => ({
   type: GET_CURRENCY_DATA_SUCCESS,
-  data
+  payload
 });
 
-export const getCurrencyFailureAction = data => ({
+export const getCurrencyFailureAction = payload => ({
   type: GET_CURRENCY_DATA_FAILURE,
-  data
+  payload
 });
 
 export const fetchCurrencyRates = exchangeRatesStr => dispatch =>
-  runApiCall({
+  runApiGetCall({
     apiEndPoint: CURRENCY_API_URL_ENDPOINT,
     urlQuery: `/quotes?pairs=${exchangeRatesStr}&api_key=${CURRENCY_API_KEY}`,
     dispatch,
