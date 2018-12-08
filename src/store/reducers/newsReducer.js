@@ -1,14 +1,14 @@
 
 import { GET_NEWS_DATA_SUCCESS, GET_NEWS_DATA_FAILURE } from "../../constants/actionTypes";
+import moment from 'moment';
 import {get} from 'lodash';
 
-export default  (state = {}, action) => {
-  const {type, payload} = action;
+export default  (state = {},  {type, payload} ) => {
   switch(type){
     case GET_NEWS_DATA_SUCCESS : {
       return {
         ...state,
-        [get(payload, 'source')]: get(payload, 'articles')
+        [get(payload, 'source')]: { news: get(payload, 'articles'), timeStamp: moment()}
       };
     }
     case GET_NEWS_DATA_FAILURE:

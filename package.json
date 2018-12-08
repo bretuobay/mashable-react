@@ -36,6 +36,7 @@
     "google-map-react": "0.25.0",
     "lodash": ">=4.17.5",
     "marker-clusterer-plus": "2.1.4",
+    "moment": "2.22.2",
     "object-assign": "4.1.1",
     "react": "16.4.2",
     "react-dom": "16.4.2",

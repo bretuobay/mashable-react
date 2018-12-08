@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { debounce } from "lodash";
 import { fetchSingleCityWeather } from "../store/actions/weatherActions";
 import { CityWeatherInfo } from '../components/CityWeatherInfo';
+import { RenderGuard } from '../components/RenderGuard';
 
 class Weather extends Component {
   componentDidMount() {
@@ -38,7 +39,10 @@ class Weather extends Component {
             <i className="icon-search" />
           </button>
         </div>
-         { this.props.data && <CityWeatherInfo weatherProps={this.props.data} /> }
+        <RenderGuard guard={this.props.data}>
+            <CityWeatherInfo weatherProps={this.props.data} /> 
+        </RenderGuard>
+  
       </div>
     );
   }

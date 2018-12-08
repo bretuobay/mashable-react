@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { CurrencyRow } from "../components/CurrencyRow";
 import { fetchCurrencyRates } from "../store/actions/currencyActions";
-import PropTypes from "prop-types";
+import { RenderGuard } from '../components/RenderGuard';
+
 
 class CurrencyRates extends Component {
   componentDidMount() {
@@ -12,9 +14,9 @@ class CurrencyRates extends Component {
   
   render() {
     return (
-      <div>
-        {this.props.data && <CurrencyRow currencies={this.props.data} /> }
-      </div>
+      <RenderGuard guard={this.props.data}>
+        <CurrencyRow currencies={this.props.data} /> 
+      </RenderGuard>
     );
   }
 }
