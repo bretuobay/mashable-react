@@ -1,6 +1,6 @@
 import React from "react";
-import  { TechnologySources } from "../../utils/articleSources";
-import NewsPage from "../NewsPage";
+import  { TechnologySources } from "../utils/articleSources";
+import NewsPage from "../components/NewsPage";
 
 const TechnologyPage = () =>
   <NewsPage 

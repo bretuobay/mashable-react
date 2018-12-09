@@ -1,6 +1,6 @@
 import React from "react";
-import  { BusinessSources } from "../../utils/articleSources";
-import NewsPage from "../NewsPage";
+import  { BusinessSources } from "../utils/articleSources";
+import NewsPage from "../components/NewsPage";
 
 const BusinessPage = () =>
   <NewsPage 

@@ -1,6 +1,6 @@
 import React from "react";
-import  { CultureSources } from "../../utils/articleSources";
-import NewsPage from "../NewsPage";
+import  { CultureSources } from "../utils/articleSources";
+import NewsPage from "../components/NewsPage";
 
 const CulturePage = () => 
   <NewsPage 

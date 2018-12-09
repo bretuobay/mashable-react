@@ -1,6 +1,6 @@
 import React from "react";
-import  { VideoSources } from "../../utils/articleSources";
-import NewsPage from "../NewsPage";
+import  { VideoSources } from "../utils/articleSources";
+import NewsPage from "../components/NewsPage";
 
 const VideosPage = () =>
     <NewsPage

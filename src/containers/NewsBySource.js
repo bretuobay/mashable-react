@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import moment from 'moment';
-import {isEmpty} from 'lodash';
+import { isEmpty } from 'lodash';
 import { fetchSingleSourceNews } from "../store/actions/newsActions";
 import PropTypes from "prop-types";
 import { NewsRow } from "../components/NewsRow";
@@ -16,7 +16,7 @@ class NewsBySource extends Component {
     const {source, fetchFromNewsAPI, data, timeStamp} = this.props;
 
     const callNewsAPI = (isEmpty(timeStamp) || data && data.length === 0) 
-      || moment(timeStamp).diff(new moment(), 'minutes') > 59
+      || moment(timeStamp).diff(new moment(), 'minutes') > 59;
    
     if (callNewsAPI) {
       fetchFromNewsAPI(source);

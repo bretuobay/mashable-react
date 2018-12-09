@@ -2,13 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
-import HomePage from '../components/pages/HomePage';
-import CulturePage from '../components/pages/CulturePage';
-import EntertainmentPage from '../components/pages/EntertainmentPage';
-import TechnologyPage from '../components/pages/TechnologyPage';
-import SciencePage from '../components/pages/SciencePage';
-import BusinessPage from '../components/pages/BusinessPage';
-import VideosPage from '../components/pages/VideosPage';
+import HomePage from '../screens/HomePage';
+import CulturePage from '../screens/CulturePage';
+import EntertainmentPage from '../screens/EntertainmentPage';
+import TechnologyPage from '../screens/TechnologyPage';
+import SciencePage from '../screens/SciencePage';
+import BusinessPage from '../screens/BusinessPage';
+import VideosPage from '../screens/VideosPage';
 import {Header} from '../components/Header';
 import {Footer} from '../components/Footer';
 
