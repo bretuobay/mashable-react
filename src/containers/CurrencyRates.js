@@ -13,11 +13,9 @@ class CurrencyRates extends Component {
   }
   
   render() {
-    return (
-      <RenderGuard guard={this.props.data}>
+    return <RenderGuard guard={this.props.data}>
         <CurrencyRow currencies={this.props.data} /> 
-      </RenderGuard>
-    );
+      </RenderGuard>;
   }
 }
 

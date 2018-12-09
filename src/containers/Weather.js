@@ -22,29 +22,26 @@ class Weather extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <span className="h6">Search Weather </span>
-        <div className="form-group">
-          <input
-            name="currentCity"
-            id="currentCity"
-            ref={el => (this.currentCity = el)}
-            type="text"
-            defaultValue={this.props.currentCity}
-            onChange={this.onChangeInput}
-            placeholder=" Search for City?"
-          />
-          <button type="submit" className="submit">
-            <i className="icon-search" />
-          </button>
-        </div>
-        <RenderGuard guard={this.props.data}>
-            <CityWeatherInfo weatherProps={this.props.data} /> 
-        </RenderGuard>
-  
-      </div>
-    );
+    return <div>
+            <span className="h6">Search Weather </span>
+            <div className="form-group">
+              <input
+                name="currentCity"
+                id="currentCity"
+                ref={el => (this.currentCity = el)}
+                type="text"
+                defaultValue={this.props.currentCity}
+                onChange={this.onChangeInput}
+                placeholder=" Search for City?"
+              />
+              <button type="submit" className="submit">
+                <i className="icon-search" />
+              </button>
+            </div>
+            <RenderGuard guard={this.props.data}>
+                <CityWeatherInfo weatherProps={this.props.data} /> 
+            </RenderGuard>
+      </div>;
   }
 }
 

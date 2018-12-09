@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import moment from 'moment';
-import { isEmpty } from 'lodash';
 import { fetchSingleSourceNews } from "../store/actions/newsActions";
 import PropTypes from "prop-types";
 import { NewsRow } from "../components/NewsRow";
-import { retrieveTimestamp, retrieveNewsFromStore } from "../utils/articlesDataMapper";
+import { retrieveTimestamp, retrieveNewsFromStore, cacheChecker} from "../utils/articlesDataMapper";
 import { RenderGuard } from '../components/RenderGuard';
 
 
@@ -15,23 +13,20 @@ class NewsBySource extends Component {
 
     const {source, fetchFromNewsAPI, data, timeStamp} = this.props;
 
-    const callNewsAPI = (isEmpty(timeStamp) || data && data.length === 0) 
-      || moment(timeStamp).diff(new moment(), 'minutes') > 59;
-   
-    if (callNewsAPI) {
+    const {noData,staleData} = cacheChecker(data,timeStamp);
+    
+    if (noData || staleData) {
       fetchFromNewsAPI(source);
     }
-  } 
+  }
 
   render() {
-    return (
-      <RenderGuard guard={this.props.data}>
-          <NewsRow
-            articles={this.props.data}
-            isSideBarList={this.props.isSideBarList}
-          />
-      </RenderGuard>
-    );
+    return  <RenderGuard guard={this.props.data}>
+            <NewsRow
+              articles={this.props.data}
+              isSideBarList={this.props.isSideBarList}
+            />
+      </RenderGuard>;
   }
 }
 
