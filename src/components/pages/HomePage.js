@@ -2,8 +2,11 @@ import React from "react";
 import  { MainSources } from "../../utils/articleSources";
 import NewsPage from "../NewsPage";
 
-export default HomePage = () =>
+const HomePage = () =>
   <NewsPage 
     mainSource={MainSources}
     isHomePage
    />;
+
+export default HomePage;
+

@@ -2,9 +2,11 @@ import React from "react";
 import  { VideoSources } from "../../utils/articleSources";
 import NewsPage from "../NewsPage";
 
-export default VideosPage = () =>
+const VideosPage = () =>
     <NewsPage
     sideBarTitle="Latest Videos"
     mainSource="ign"
     sideBarSources={VideoSources}
     />;
+    
+export default VideosPage;   
