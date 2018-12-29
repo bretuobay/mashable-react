@@ -7,6 +7,7 @@ import { RenderGuard } from '../components/RenderGuard';
 
 
 class CurrencyRates extends Component {
+
   componentDidMount() {
     const {fetchCurrencyRates, currencyRatesList} = this.props;
     fetchCurrencyRates(currencyRatesList);
@@ -26,11 +27,12 @@ CurrencyRates.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-    fetchCurrencyRates: exchangeRatesStr => dispatch(fetchCurrencyRates(exchangeRatesStr))
+  fetchCurrencyRates: exchangeRatesStr =>
+    dispatch(fetchCurrencyRates(exchangeRatesStr))
 });
 
 const mapStateToProps = state => ({
-    data: state.currencyReducer.currencyRates
+  data: state.currencyReducer.currencyRates
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrencyRates);

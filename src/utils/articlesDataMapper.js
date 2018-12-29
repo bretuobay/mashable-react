@@ -1,11 +1,13 @@
 import {get,isEmpty} from "lodash";
 import moment from 'moment';
 
-export const retrieveNewsFromStore = (state, ownProps) => 
-  get(state, `currentNews.${ownProps.source}.news`);
+// This is some sort of selectors..
+// source is destructed from ownProps
+export const retrieveNewsFromStore = (state, {source}) => 
+  get(state, `currentNews.${source}.news`);
 
-export const retrieveTimestamp = (state, ownProps) =>  
-  get(state, `currentNews.${ownProps.source}.timeStamp`);
+export const retrieveTimestamp = (state, {source}) =>  
+  get(state, `currentNews.${source}.timeStamp`);
 
 export const cacheChecker = (data, timeStamp) =>
   ({
