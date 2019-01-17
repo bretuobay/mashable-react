@@ -1,15 +1,14 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types'
 
-const is = (guard, value = null) => 
-  typeof guard === 'function' ? guard(value): !!guard;
+const exists = (guard, value = null) => typeof guard === 'function' ? guard(value): !!guard;
 
 export const RenderGuard = ({
     children,
     guard,
     value
   }) =>
-  is(guard, value) &&
+  exists(guard, value) &&
   <Fragment >
       {children}
  </Fragment>
