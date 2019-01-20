@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchSingleSourceNews } from "../store/actions/newsActions";
+import { fetchSingleSourceNewsAction } from "../store/actions/newsActions";
 import PropTypes from "prop-types";
 import { NewsRow } from "../components/NewsRow";
 import { retrieveTimestamp, retrieveNewsFromStore, cacheChecker} from "../utils/articlesDataMapper";
@@ -16,7 +16,7 @@ class NewsBySource extends Component {
     const {noData,staleData} = cacheChecker(data,timeStamp);
     
     if (noData || staleData) {
-      fetchFromNewsAPI(source);
+     fetchFromNewsAPI(source);
     }
   }
 
@@ -39,7 +39,7 @@ NewsBySource.propTypes = {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchFromNewsAPI: source => dispatch(fetchSingleSourceNews(source))
+  fetchFromNewsAPI: source => dispatch(fetchSingleSourceNewsAction(source))
 });
 
 const mapStateToProps = (state, ownProps) => ({

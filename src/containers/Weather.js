@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { debounce } from "lodash";
-import { fetchSingleCityWeather } from "../store/actions/weatherActions";
+import { fetchSingleCityWeatherAction } from "../store/actions/weatherActions";
 import { CityWeatherInfo } from '../components/CityWeatherInfo';
 import { RenderGuard } from '../components/RenderGuard';
 
@@ -17,7 +17,7 @@ class Weather extends Component {
     event.persist();
     const {value} = this.currentCity;
      if(value.length >= 2){
-      this.props.onLoadSingleCity(value);
+     // this.props.onLoadSingleCity(value);
      }
   }
 
@@ -52,7 +52,7 @@ Weather.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  onLoadSingleCity: currentCity => dispatch(fetchSingleCityWeather(currentCity))
+  onLoadSingleCity: currentCity => dispatch(fetchSingleCityWeatherAction(currentCity))
 });
 
 const mapStateToProps = state => ({

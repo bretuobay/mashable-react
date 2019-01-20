@@ -2,15 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { CurrencyRow } from "../components/CurrencyRow";
-import { fetchCurrencyRates } from "../store/actions/currencyActions";
+import { fetchCurrencyRatesAction } from "../store/actions/currencyActions";
 import { RenderGuard } from '../components/RenderGuard';
 
 
 class CurrencyRates extends Component {
 
   componentDidMount() {
-    const {fetchCurrencyRates, currencyRatesList} = this.props;
-    fetchCurrencyRates(currencyRatesList);
+    const {fetchCurrencyRatesAction, currencyRatesList} = this.props;
+    fetchCurrencyRatesAction(currencyRatesList);
   }
   
   render() {
@@ -23,12 +23,12 @@ class CurrencyRates extends Component {
 CurrencyRates.propTypes = {
   data: PropTypes.array,
   currencyRatesList: PropTypes.string,
-  fetchCurrencyRates: PropTypes.func.isRequired
+  fetchCurrencyRatesAction: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchCurrencyRates: exchangeRatesStr =>
-    dispatch(fetchCurrencyRates(exchangeRatesStr))
+  fetchCurrencyRatesAction: exchangeRatesStr =>
+    dispatch(fetchCurrencyRatesAction(exchangeRatesStr))
 });
 
 const mapStateToProps = state => ({

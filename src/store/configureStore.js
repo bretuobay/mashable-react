@@ -1,19 +1,21 @@
 import {createStore, compose, applyMiddleware} from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
-import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga'
 import createHistory from 'history/createBrowserHistory';
 // 'routerMiddleware': the new way of storing route changes with redux middleware since rrV4.
 import { routerMiddleware } from 'react-router-redux';
 import rootReducer from './reducers';
+import mashableSagas from '../store/actions/sagas';
+
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware()
+
 export const history = createHistory();
 function configureStoreProd(initialState) {
   const reactRouterMiddleware = routerMiddleware(history);
   const middlewares = [
-    // Add other middleware on this line...
-
-    // thunk middleware can also accept an extra argument to be passed to each thunk action
-    // https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
-    thunk,
+   // We replace thunk middleware with sagaMiddleware
+    sagaMiddleware,
     reactRouterMiddleware,
   ];
 
@@ -31,9 +33,8 @@ function configureStoreDev(initialState) {
     // Redux middleware that spits an error on you when you try to mutate your state either inside a dispatch or between dispatches.
     reduxImmutableStateInvariant(),
 
-    // thunk middleware can also accept an extra argument to be passed to each thunk action
-    // https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
-    thunk,
+    // We replace thunk middleware with sagaMiddleware
+    sagaMiddleware,
     reactRouterMiddleware,
   ];
 
@@ -42,6 +43,10 @@ function configureStoreDev(initialState) {
     applyMiddleware(...middlewares)
     )
   );
+
+  
+  // then run the saga
+  sagaMiddleware.run(mashableSagas)
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
