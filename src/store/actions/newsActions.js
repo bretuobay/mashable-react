@@ -8,7 +8,7 @@ export const fetchSingleSourceNewsAction = (source) => ({
   payload: source
 });
 
-// worker Saga: will be fired on USER_FETCH_REQUESTED actions
+// worker Saga: will be fired on GET_NEWS_DATA actions
 function* fetchSingleSourceNews({ payload: source }) {
   try {
      const {data} = yield runApiGetCall({
@@ -22,7 +22,7 @@ function* fetchSingleSourceNews({ payload: source }) {
 }
 
 /*
- Starts get on each dispatched `USER_FETCH_REQUESTED` action.
+ Starts get on each dispatched `GET_NEWS_DATA` action.
  Allows concurrent fetches of user.
 */
 function* newsSaga() {

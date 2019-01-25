@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import NewsBySource from "../containers/NewsBySource";
-import Weather from "../containers/Weather";
-import CurrencyRates from "../containers/CurrencyRates";
+import NewsBySource from "../widgets/NewsBySource";
+import Weather from "../widgets/Weather";
+import CurrencyRates from "../widgets/CurrencyRates";
 
 const NewsPage = ({sideBarTitle, mainSource, sideBarSources, isHomePage = false}) => (
     <div className="row">

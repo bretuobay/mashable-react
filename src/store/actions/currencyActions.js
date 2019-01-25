@@ -12,6 +12,7 @@ export const fetchCurrencyRatesAction = (exchangeRatesStr) => ({
 // worker Saga: will be fired on GET_CURRENCY_DATA actions
 function* fetchCurrencyRates({ payload:exchangeRatesStr }) {
   try {
+    // use call for effects utilities to enable  easiertesting
      const  {data}  = yield runApiGetCall({
       apiEndPoint: CURRENCY_API_URL_ENDPOINT,
       urlQuery: `/quotes?pairs=${exchangeRatesStr}&api_key=${CURRENCY_API_KEY}`
